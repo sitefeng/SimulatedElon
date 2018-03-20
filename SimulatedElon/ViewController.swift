@@ -59,7 +59,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         panRec.delegate = self
         backgroundView.addGestureRecognizer(panRec)
         
-        playAudioFileWithId(audioFileId: "513")
+        playAudioFileWithId(audioFileId: "")
     }
     
     func recognize() {
@@ -127,11 +127,11 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         let request = self.apiAi.textRequest()
         request?.query = [requestString]
         request?.setCompletionBlockSuccess({ (request, responseRaw) in
-            print("response \(responseRaw)")
+            print("response \(responseRaw!)")
             let response = responseRaw as! NSDictionary
             let result = response["result"] as! NSDictionary
             let fulfillment = result["fulfillment"] as! NSDictionary
-            let displayText = fulfillment["displayText"]
+//            let displayText = fulfillment["displayText"]
             
             // Set current audio
             self.currentMainAudios = [self.getRandomStartingAudioId(), "735"]
@@ -139,7 +139,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
             if let data = fulfillment["data"] as? NSDictionary {
                 
                 if let mainAudioIds = data["audio"] as? Array<String> {
-                    self.currentMainAudios = [self.getRandomStartingAudioId()];
+                    self.currentMainAudios = [];
                     
                     for mainAudio in mainAudioIds {
                         self.currentMainAudios.append(mainAudio)
@@ -159,6 +159,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
                 
                 // Start playing
                 self.startPlayingAudioSequence()
+                
             } else {
                 
                 // Play I don't know audio
@@ -167,7 +168,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
             
             
         }, failure: { (request, error) in
-            print("Error \(error)")
+            print("Error \(error?.localizedDescription)")
         })
         self.apiAi.enqueue(request)
     }
@@ -183,8 +184,12 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         if self.currentAudioIndex < self.currentMainAudios.count {
             // play main audio
             playAudioFileWithId(audioFileId: currentMainAudios[currentAudioIndex])
-        } else {
-            // start playing backup audio intermittently
+        } else if self.currentAudioIndex == self.currentMainAudios.count {
+            // start playing one backup audio at the end
+            Timer.scheduledTimer(withTimeInterval: 1 + Double(arc4random_uniform(5)), repeats: false, block: { (timer) in
+                let randomBackupIndex = Int(arc4random_uniform(UInt32(self.currentBackupAudios.count)))
+                self.playAudioFileWithId(audioFileId: self.currentBackupAudios[randomBackupIndex])
+            })
         }
     }
     
