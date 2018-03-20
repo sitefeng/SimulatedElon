@@ -1,0 +1,6 @@
+framework module Pods_SimulatedElon {
+  umbrella header "Pods-SimulatedElon-umbrella.h"
+
+  export *
+  module * { export * }
+}
