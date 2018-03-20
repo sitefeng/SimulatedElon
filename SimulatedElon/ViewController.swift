@@ -59,7 +59,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         panRec.delegate = self
         backgroundView.addGestureRecognizer(panRec)
         
-        playAudioFileWithId(audioFileId: "")
+//        playAudioFileWithId(audioFileId: "")
     }
     
     func recognize() {
@@ -89,7 +89,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     }
     
     private func playAudioFileWithId(audioFileId: String) {
-        print("***** Play Audio File: \(audioFileId)")
+
         if (self.currentAudioId == audioFileId) { return }
         
         if (self.audioPlayerInitialized) {
@@ -187,8 +187,10 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         } else if self.currentAudioIndex == self.currentMainAudios.count {
             // start playing one backup audio at the end
             Timer.scheduledTimer(withTimeInterval: 1 + Double(arc4random_uniform(5)), repeats: false, block: { (timer) in
-                let randomBackupIndex = Int(arc4random_uniform(UInt32(self.currentBackupAudios.count)))
-                self.playAudioFileWithId(audioFileId: self.currentBackupAudios[randomBackupIndex])
+                if (self.currentBackupAudios.count > 0) {
+                    let randomBackupIndex = Int(arc4random_uniform(UInt32(self.currentBackupAudios.count)))
+                    self.playAudioFileWithId(audioFileId: self.currentBackupAudios[randomBackupIndex])
+                }
             })
         }
     }
