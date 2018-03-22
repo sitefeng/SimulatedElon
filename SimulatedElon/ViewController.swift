@@ -12,9 +12,20 @@ import AudioToolbox
 import AVFoundation
 import SpeechKit
 
+enum ElonStatus {
+    case Waiting
+    case Talking
+    case Listening
+}
+
 class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDelegate, UIGestureRecognizerDelegate {
     
+    // Constants
+    let startingAudioIds = ["569", "570", "593"]
+    let connectingAudioIds = ["544", "545", "546", "547", "548", "553", "561", "566", "582", "584", "595", "596", "5110", "23", "77", "78", "717"]
+    
     // Logic
+    private var currentStatus: ElonStatus = .Waiting
     private var currentAudioId: String?
     private var audioPlayerInitialized = false
     private var currentMainAudios: [String] = []
@@ -25,19 +36,24 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     private var currentImageIndex: Int = 1
     private var gestureRecStartingIndex: Int = 1
     
-    let startingAudioIds = ["569", "570", "593"]
-    let connectingAudioIds = ["544", "545", "546", "547", "548", "553", "561", "566", "582", "584", "595", "596", "5110", "23", "77", "78", "717"]
-    
+    // Animations
+    private let mouthImages: Int = 8
+    private var mouthImageIndex: Int = 0
+    private var mouthAnimationSpeed = 0.1
     
     var audioPlayer = AVAudioPlayer()
     var apiAi: ApiAI
     var skSession:SKSession?
     var skTransaction:SKTransaction?
+    var mouthTimer: Timer?
     
     @IBOutlet weak var requestButton: UIButton!
     @IBOutlet weak var elonImageView: UIImageView!
     @IBOutlet weak var backgroundView: UIView!
     
+    @IBOutlet weak var bubbleImageView: UIImageView!
+    @IBOutlet weak var orangeDotImageView: UIImageView!
+    @IBOutlet weak var bubbleLabel: UILabel!
     
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -59,10 +75,29 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         panRec.delegate = self
         backgroundView.addGestureRecognizer(panRec)
         
-//        playAudioFileWithId(audioFileId: "")
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch {
+            print("Audio Session set category Failed")
+        }
+        
+        elonImageView.layer.shadowRadius = 30
+        elonImageView.layer.shadowColor = UIColor.black.cgColor
+        elonImageView.layer.shadowOffset = CGSize(width: 16, height: 16)
+        elonImageView.layer.shadowOpacity = 0.8
+        
+        // Start animations
+        self.startBlinkAnimations()
+        self.startMouthAnimations()
+        
+        // Play Audio
+        playAudioFileWithId(audioFileId: "729")
     }
     
     func recognize() {
+        if (currentStatus == .Listening) { return }
+        currentStatus = .Listening
+        
         // Start listening to the user.
         let recognitionType = SKTransactionSpeechTypeDictation
         let endpointer = SKTransactionEndOfSpeechDetection.short
@@ -81,10 +116,12 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     }
     
     func stopRecording() {
+        currentStatus = .Waiting
         skTransaction!.stopRecording()
     }
     
     func cancelRecording() {
+        currentStatus = .Waiting
         skTransaction!.cancel()
     }
     
@@ -109,8 +146,10 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
             audioPlayer.volume = 1
             audioPlayer.delegate = self
             audioPlayer.play()
+            
+            currentStatus = .Talking;
         } else {
-            print("Audio file not found")
+            print("Audio file not found: \(audioFileId)")
         }
     }
     
@@ -127,7 +166,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         let request = self.apiAi.textRequest()
         request?.query = [requestString]
         request?.setCompletionBlockSuccess({ (request, responseRaw) in
-            print("response \(responseRaw!)")
+//            print("response \(responseRaw!)")
             let response = responseRaw as! NSDictionary
             let result = response["result"] as! NSDictionary
             let fulfillment = result["fulfillment"] as! NSDictionary
@@ -173,6 +212,56 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         self.apiAi.enqueue(request)
     }
     
+    
+    // Animations
+    func startBlinkAnimations() {
+        let waitInterval = 0.5 + Double(arc4random() % 6)
+        Timer.scheduledTimer(withTimeInterval: waitInterval, repeats: false, block: { (timer) in
+            OperationQueue.main.addOperation {
+                self.elonImageView.image = UIImage(named: "blink.png")
+            }
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { (timer) in
+                OperationQueue.main.addOperation {
+                    self.elonImageView.image = UIImage(named: "1.png")
+                }
+            })
+            
+            self.startBlinkAnimations()
+        })
+    }
+    
+    func startMouthAnimations() {
+        // Mouth speed from 0.02 to 0.2
+        // Change speed for every whole mouth movement cycle
+        if (self.mouthImageIndex == 0) {
+            let waitInterval = 0.02 + Double(arc4random() % 10) / 100
+            self.mouthAnimationSpeed = waitInterval
+            if (arc4random() % 100 > 50) {
+                self.mouthTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
+                    self.startMouthAnimations()
+                })
+                return
+            }
+        }
+        
+        self.mouthTimer = Timer.scheduledTimer(withTimeInterval: self.mouthAnimationSpeed, repeats: false, block: { (timer) in
+            self.moveMouthIncrementally();
+            self.startMouthAnimations()
+        })
+    }
+    
+    func moveMouthIncrementally() {
+        if (self.currentStatus == ElonStatus.Talking) {
+            OperationQueue.main.addOperation {
+                self.mouthImageIndex = (self.mouthImageIndex + 1) % self.mouthImages
+                let elonImage = UIImage(named: "mouth\(self.mouthImageIndex).png")
+                self.elonImageView.image = elonImage
+            }
+        }
+    }
+    
+    
+    // MARK - Callbacks
 
     @IBAction func requestButtonTapped(_ sender: Any) {
         recognize()
@@ -180,25 +269,29 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     
     // MARK - AudioDelegate
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        currentStatus = .Waiting
+        
         self.currentAudioIndex += 1
         if self.currentAudioIndex < self.currentMainAudios.count {
+    
             // play main audio
             playAudioFileWithId(audioFileId: currentMainAudios[currentAudioIndex])
         } else if self.currentAudioIndex == self.currentMainAudios.count {
+            
             // start playing one backup audio at the end
-            Timer.scheduledTimer(withTimeInterval: 1 + Double(arc4random_uniform(5)), repeats: false, block: { (timer) in
-                if (self.currentBackupAudios.count > 0) {
+            if (self.currentBackupAudios.count > 0) {
+                Timer.scheduledTimer(withTimeInterval: 1 + Double(arc4random_uniform(5)), repeats: false, block: { (timer) in
                     let randomBackupIndex = Int(arc4random_uniform(UInt32(self.currentBackupAudios.count)))
                     self.playAudioFileWithId(audioFileId: self.currentBackupAudios[randomBackupIndex])
-                }
-            })
+                })
+            }
+        } else {
+            // Finished
         }
     }
     
     
     // GestureRecognizerDelegate
-    
-    
     @objc func backgroundViewSwipped(recognizer: UIPanGestureRecognizer) {
 
         let translation = recognizer.translation(in: self.backgroundView)

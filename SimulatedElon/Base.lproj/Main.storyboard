@@ -10,6 +10,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -20,20 +25,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wd5-qT-QlJ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cubeBackground.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LAC-3C-XdP">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soundOrangeDot.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nuo-GT-3Ka">
+                                        <rect key="frame" x="132" y="549" width="110" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="8n1-7J-JFU"/>
+                                            <constraint firstAttribute="height" constant="110" id="dXs-rK-zMC"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hae-Ou-0vj">
+                                        <rect key="frame" x="143.5" y="559" width="88" height="88"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="88" id="3f4-LD-w0A"/>
+                                            <constraint firstAttribute="width" constant="88" id="I2w-N8-2hd"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="microphone.png"/>
+                                        <connections>
+                                            <action selector="requestButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lTo-ku-6Fv"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble2.png" translatesAutoresizingMaskIntoConstraints="NO" id="uQ2-Ji-0SQ">
+                                        <rect key="frame" x="30" y="26.5" width="315" height="170"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="170" id="mAh-ra-YLv"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjK-45-uaH">
+                                        <rect key="frame" x="46" y="40" width="282" height="116.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRD-7J-paA">
-                                <rect key="frame" x="10" y="30" width="57" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="57" id="EXO-II-aDD"/>
-                                    <constraint firstAttribute="height" constant="30" id="ErH-L2-bp9"/>
+                                    <constraint firstItem="LAC-3C-XdP" firstAttribute="leading" secondItem="Wd5-qT-QlJ" secondAttribute="leading" id="Cba-dh-UBW"/>
+                                    <constraint firstItem="Nuo-GT-3Ka" firstAttribute="centerX" secondItem="Wd5-qT-QlJ" secondAttribute="centerX" id="FJo-bl-E5C"/>
+                                    <constraint firstItem="LAC-3C-XdP" firstAttribute="top" secondItem="Wd5-qT-QlJ" secondAttribute="top" id="FLq-HO-IHf"/>
+                                    <constraint firstItem="hae-Ou-0vj" firstAttribute="centerX" secondItem="Wd5-qT-QlJ" secondAttribute="centerX" id="HAD-VT-k4H"/>
+                                    <constraint firstAttribute="bottom" secondItem="LAC-3C-XdP" secondAttribute="bottom" id="IuY-7J-tb9"/>
+                                    <constraint firstItem="uQ2-Ji-0SQ" firstAttribute="leading" secondItem="Wd5-qT-QlJ" secondAttribute="leading" constant="30" id="QF6-xj-fED"/>
+                                    <constraint firstAttribute="trailing" secondItem="uQ2-Ji-0SQ" secondAttribute="trailing" constant="30" id="QIq-wc-7y7"/>
+                                    <constraint firstAttribute="trailing" secondItem="RjK-45-uaH" secondAttribute="trailing" constant="47" id="ZNX-ba-rat"/>
+                                    <constraint firstAttribute="trailing" secondItem="LAC-3C-XdP" secondAttribute="trailing" id="aQK-lV-wc5"/>
+                                    <constraint firstItem="RjK-45-uaH" firstAttribute="top" secondItem="Wd5-qT-QlJ" secondAttribute="top" constant="40" id="kk8-l8-Lut"/>
+                                    <constraint firstItem="RjK-45-uaH" firstAttribute="leading" secondItem="Wd5-qT-QlJ" secondAttribute="leading" constant="46" id="mm2-Bd-pI7"/>
                                 </constraints>
-                                <state key="normal" title="Request"/>
-                                <connections>
-                                    <action selector="requestButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KPQ-Zu-Y3h"/>
-                                </connections>
-                            </button>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.png" translatesAutoresizingMaskIntoConstraints="NO" id="wuv-YM-GP8">
                                 <rect key="frame" x="50" y="196.5" width="274" height="274"/>
                                 <constraints>
@@ -43,22 +85,27 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dRD-7J-paA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="0b8-FD-wKV"/>
-                            <constraint firstItem="dRD-7J-paA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="0yT-uc-EHL"/>
                             <constraint firstItem="wuv-YM-GP8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CbZ-Pt-q5X"/>
                             <constraint firstItem="Wd5-qT-QlJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ETl-ni-au0"/>
                             <constraint firstItem="wuv-YM-GP8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ppk-sh-GCB"/>
+                            <constraint firstItem="hae-Ou-0vj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-108" id="WNB-O4-JIU"/>
                             <constraint firstItem="wuv-YM-GP8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="acW-Aw-1P1"/>
-                            <constraint firstItem="Wd5-qT-QlJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="deh-uH-NjY"/>
+                            <constraint firstItem="wuv-YM-GP8" firstAttribute="top" secondItem="uQ2-Ji-0SQ" secondAttribute="bottom" id="c2z-PD-xCo"/>
+                            <constraint firstItem="wuv-YM-GP8" firstAttribute="top" secondItem="RjK-45-uaH" secondAttribute="bottom" constant="40" id="ccY-aZ-leg"/>
+                            <constraint firstItem="Wd5-qT-QlJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="deh-uH-NjY"/>
+                            <constraint firstItem="Nuo-GT-3Ka" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-118" id="miG-86-7SU"/>
                             <constraint firstItem="Wd5-qT-QlJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mlZ-Fb-r0b"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Wd5-qT-QlJ" secondAttribute="bottom" id="n8I-v7-MEg"/>
+                            <constraint firstAttribute="bottom" secondItem="Wd5-qT-QlJ" secondAttribute="bottom" id="n8I-v7-MEg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="Wd5-qT-QlJ" id="yQB-Bj-s77"/>
+                        <outlet property="bubbleImageView" destination="uQ2-Ji-0SQ" id="GJM-nC-fVX"/>
+                        <outlet property="bubbleLabel" destination="RjK-45-uaH" id="zfg-f8-CYA"/>
                         <outlet property="elonImageView" destination="wuv-YM-GP8" id="yHT-ye-kkw"/>
-                        <outlet property="requestButton" destination="dRD-7J-paA" id="S4A-Gb-6KO"/>
+                        <outlet property="orangeDotImageView" destination="Nuo-GT-3Ka" id="j9N-x5-VPI"/>
+                        <outlet property="requestButton" destination="hae-Ou-0vj" id="fbF-1Z-6tD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -68,5 +115,9 @@
     </scenes>
     <resources>
         <image name="1.png" width="700" height="740"/>
+        <image name="bubble2.png" width="1233" height="867"/>
+        <image name="cubeBackground.jpg" width="2917" height="3000"/>
+        <image name="microphone.png" width="512" height="512"/>
+        <image name="soundOrangeDot.png" width="200" height="200"/>
     </resources>
 </document>

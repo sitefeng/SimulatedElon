@@ -16,6 +16,12 @@
 		76328F3A205DC9AD003C23C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76328F38205DC9AD003C23C5 /* LaunchScreen.storyboard */; };
 		76328F45205DC9AD003C23C5 /* SimulatedElonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76328F44205DC9AD003C23C5 /* SimulatedElonTests.swift */; };
 		76328F50205DC9AD003C23C5 /* SimulatedElonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76328F4F205DC9AD003C23C5 /* SimulatedElonUITests.swift */; };
+		7662CF872063863200BB4195 /* bubble1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF862063863200BB4195 /* bubble1.png */; };
+		7662CF8B2063894B00BB4195 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8A2063894A00BB4195 /* microphone.png */; };
+		7662CF8D20638AC100BB4195 /* bubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8C20638AC000BB4195 /* bubble2.png */; };
+		7662CF8F20638D4B00BB4195 /* microphoneActivated.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8E20638D4B00BB4195 /* microphoneActivated.png */; };
+		7662CF9120638D6000BB4195 /* soundOrangeDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF9020638D5F00BB4195 /* soundOrangeDot.png */; };
+		7662CF93206390A700BB4195 /* SEUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7662CF92206390A700BB4195 /* SEUtility.swift */; };
 		76E288772060DB3400D4256F /* 513.wav in Resources */ = {isa = PBXBuildFile; fileRef = 76E287A62060DB3400D4256F /* 513.wav */; };
 		76E288782060DB3400D4256F /* 711.wav in Resources */ = {isa = PBXBuildFile; fileRef = 76E287A72060DB3400D4256F /* 711.wav */; };
 		76E288792060DB3400D4256F /* 315.wav in Resources */ = {isa = PBXBuildFile; fileRef = 76E287A82060DB3400D4256F /* 315.wav */; };
@@ -290,6 +296,19 @@
 		76E289C62060F21E00D4256F /* SpeechKitConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E289C52060F21E00D4256F /* SpeechKitConfiguration.swift */; };
 		76E289C82060F26B00D4256F /* SpeechKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E289C72060F26B00D4256F /* SpeechKit.framework */; };
 		76E289CA2061142900D4256F /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E289C92061142800D4256F /* 0.png */; };
+		76E289CC2062232E00D4256F /* cubeBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76E289CB2062232E00D4256F /* cubeBackground.jpg */; };
+		76E289CF2062236100D4256F /* blueBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76E289CE2062236100D4256F /* blueBackground.jpg */; };
+		76E28A6220636D7B00D4256F /* blink.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A6120636D7B00D4256F /* blink.png */; };
+		76E28A6520636D9200D4256F /* winkRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A6320636D9200D4256F /* winkRight.png */; };
+		76E28A6620636D9200D4256F /* winkLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A6420636D9200D4256F /* winkLeft.png */; };
+		76E28A6B20636F2100D4256F /* mouth4.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A6720636F2100D4256F /* mouth4.png */; };
+		76E28A6C20636F2100D4256F /* mouth3.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A6820636F2100D4256F /* mouth3.png */; };
+		76E28A6D20636F2100D4256F /* mouth1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A6920636F2100D4256F /* mouth1.png */; };
+		76E28A6E20636F2100D4256F /* mouth2.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A6A20636F2100D4256F /* mouth2.png */; };
+		76E28A7220636F4C00D4256F /* mouth6.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A6F20636F4C00D4256F /* mouth6.png */; };
+		76E28A7320636F4C00D4256F /* mouth7.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A7020636F4C00D4256F /* mouth7.png */; };
+		76E28A7420636F4C00D4256F /* mouth5.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A7120636F4C00D4256F /* mouth5.png */; };
+		76E28A762063707D00D4256F /* mouth0.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A752063707D00D4256F /* mouth0.png */; };
 		76F60D84205E23E7006449B0 /* ApiAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F60D85205E23E7006449B0 /* ApiAI.framework */; };
 /* End PBXBuildFile section */
 
@@ -326,6 +345,12 @@
 		76328F4B205DC9AD003C23C5 /* SimulatedElonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimulatedElonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76328F4F205DC9AD003C23C5 /* SimulatedElonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatedElonUITests.swift; sourceTree = "<group>"; };
 		76328F51205DC9AD003C23C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7662CF862063863200BB4195 /* bubble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble1.png; sourceTree = "<group>"; };
+		7662CF8A2063894A00BB4195 /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
+		7662CF8C20638AC000BB4195 /* bubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble2.png; sourceTree = "<group>"; };
+		7662CF8E20638D4B00BB4195 /* microphoneActivated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphoneActivated.png; sourceTree = "<group>"; };
+		7662CF9020638D5F00BB4195 /* soundOrangeDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundOrangeDot.png; sourceTree = "<group>"; };
+		7662CF92206390A700BB4195 /* SEUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEUtility.swift; sourceTree = "<group>"; };
 		76E287A62060DB3400D4256F /* 513.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 513.wav; sourceTree = "<group>"; };
 		76E287A72060DB3400D4256F /* 711.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 711.wav; sourceTree = "<group>"; };
 		76E287A82060DB3400D4256F /* 315.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 315.wav; sourceTree = "<group>"; };
@@ -600,6 +625,19 @@
 		76E289C52060F21E00D4256F /* SpeechKitConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechKitConfiguration.swift; sourceTree = "<group>"; };
 		76E289C72060F26B00D4256F /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpeechKit.framework; sourceTree = "<group>"; };
 		76E289C92061142800D4256F /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		76E289CB2062232E00D4256F /* cubeBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cubeBackground.jpg; sourceTree = "<group>"; };
+		76E289CE2062236100D4256F /* blueBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blueBackground.jpg; sourceTree = "<group>"; };
+		76E28A6120636D7B00D4256F /* blink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blink.png; sourceTree = "<group>"; };
+		76E28A6320636D9200D4256F /* winkRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winkRight.png; sourceTree = "<group>"; };
+		76E28A6420636D9200D4256F /* winkLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winkLeft.png; sourceTree = "<group>"; };
+		76E28A6720636F2100D4256F /* mouth4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth4.png; sourceTree = "<group>"; };
+		76E28A6820636F2100D4256F /* mouth3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth3.png; sourceTree = "<group>"; };
+		76E28A6920636F2100D4256F /* mouth1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth1.png; sourceTree = "<group>"; };
+		76E28A6A20636F2100D4256F /* mouth2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth2.png; sourceTree = "<group>"; };
+		76E28A6F20636F4C00D4256F /* mouth6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth6.png; sourceTree = "<group>"; };
+		76E28A7020636F4C00D4256F /* mouth7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth7.png; sourceTree = "<group>"; };
+		76E28A7120636F4C00D4256F /* mouth5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth5.png; sourceTree = "<group>"; };
+		76E28A752063707D00D4256F /* mouth0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth0.png; sourceTree = "<group>"; };
 		76F60D85205E23E7006449B0 /* ApiAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ApiAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE16FD81A00D07E02B6F2FE /* Pods-SimulatedElon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimulatedElon.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimulatedElon/Pods-SimulatedElon.release.xcconfig"; sourceTree = "<group>"; };
 		BB7E7B0AF58DBFCC6FDF627C /* Pods-SimulatedElon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimulatedElon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimulatedElon/Pods-SimulatedElon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -685,7 +723,9 @@
 				76328F2E205DC9AD003C23C5 /* ViewController.swift */,
 				76E289C52060F21E00D4256F /* SpeechKitConfiguration.swift */,
 				76328F30205DC9AD003C23C5 /* Main.storyboard */,
+				7662CF92206390A700BB4195 /* SEUtility.swift */,
 				76328F36205DC9AD003C23C5 /* Assets.xcassets */,
+				76E289CD2062233300D4256F /* images */,
 				76E289482060DB4100D4256F /* elonImages */,
 				76E287A52060DB3400D4256F /* elonAudio */,
 				76328F38205DC9AD003C23C5 /* LaunchScreen.storyboard */,
@@ -932,6 +972,17 @@
 		76E289482060DB4100D4256F /* elonImages */ = {
 			isa = PBXGroup;
 			children = (
+				76E28A752063707D00D4256F /* mouth0.png */,
+				76E28A6920636F2100D4256F /* mouth1.png */,
+				76E28A6A20636F2100D4256F /* mouth2.png */,
+				76E28A6820636F2100D4256F /* mouth3.png */,
+				76E28A6720636F2100D4256F /* mouth4.png */,
+				76E28A7120636F4C00D4256F /* mouth5.png */,
+				76E28A6F20636F4C00D4256F /* mouth6.png */,
+				76E28A7020636F4C00D4256F /* mouth7.png */,
+				76E28A6420636D9200D4256F /* winkLeft.png */,
+				76E28A6320636D9200D4256F /* winkRight.png */,
+				76E28A6120636D7B00D4256F /* blink.png */,
 				76E289492060DB4100D4256F /* 60.png */,
 				76E2894A2060DB4100D4256F /* 48.png */,
 				76E2894B2060DB4100D4256F /* 49.png */,
@@ -995,6 +1046,20 @@
 				76E289842060DB4100D4256F /* 52.png */,
 			);
 			path = elonImages;
+			sourceTree = "<group>";
+		};
+		76E289CD2062233300D4256F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				7662CF9020638D5F00BB4195 /* soundOrangeDot.png */,
+				7662CF8E20638D4B00BB4195 /* microphoneActivated.png */,
+				7662CF8C20638AC000BB4195 /* bubble2.png */,
+				7662CF8A2063894A00BB4195 /* microphone.png */,
+				7662CF862063863200BB4195 /* bubble1.png */,
+				76E289CE2062236100D4256F /* blueBackground.jpg */,
+				76E289CB2062232E00D4256F /* cubeBackground.jpg */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1124,6 +1189,7 @@
 				76E288B92060DB3400D4256F /* 576.wav in Resources */,
 				76E289B12060DB4100D4256F /* 55.png in Resources */,
 				76E289022060DB3400D4256F /* 226.wav in Resources */,
+				76E28A762063707D00D4256F /* mouth0.png in Resources */,
 				76E2888A2060DB3400D4256F /* 717.wav in Resources */,
 				76E288A32060DB3400D4256F /* 565.wav in Resources */,
 				76E288842060DB3400D4256F /* 28.wav in Resources */,
@@ -1152,6 +1218,9 @@
 				76E2898E2060DB4100D4256F /* 29.png in Resources */,
 				76E288A62060DB3400D4256F /* 559.wav in Resources */,
 				76E289872060DB4100D4256F /* 49.png in Resources */,
+				76E28A7220636F4C00D4256F /* mouth6.png in Resources */,
+				7662CF8F20638D4B00BB4195 /* microphoneActivated.png in Resources */,
+				76E289CC2062232E00D4256F /* cubeBackground.jpg in Resources */,
 				76E2892D2060DB3400D4256F /* 518.wav in Resources */,
 				76E289212060DB3400D4256F /* 525.wav in Resources */,
 				76E288F82060DB3400D4256F /* 556.wav in Resources */,
@@ -1159,6 +1228,7 @@
 				76E289B22060DB4100D4256F /* 7.png in Resources */,
 				76E289852060DB4100D4256F /* 60.png in Resources */,
 				76E288C32060DB3400D4256F /* 561.wav in Resources */,
+				76E28A6D20636F2100D4256F /* mouth1.png in Resources */,
 				76E2889A2060DB3400D4256F /* 729.wav in Resources */,
 				76E2899F2060DB4100D4256F /* 23.png in Resources */,
 				76E2887A2060DB3400D4256F /* 314.wav in Resources */,
@@ -1173,6 +1243,7 @@
 				76E288EF2060DB3400D4256F /* 557.wav in Resources */,
 				76E288E22060DB3400D4256F /* 552.wav in Resources */,
 				76E289A52060DB4100D4256F /* 30.png in Resources */,
+				7662CF872063863200BB4195 /* bubble1.png in Resources */,
 				76E289332060DB3400D4256F /* 25.wav in Resources */,
 				76E288A52060DB3400D4256F /* 217.wav in Resources */,
 				76E289452060DB3400D4256F /* 734.wav in Resources */,
@@ -1182,10 +1253,12 @@
 				76E288C82060DB3400D4256F /* 548.wav in Resources */,
 				76E288C22060DB3400D4256F /* 575.wav in Resources */,
 				76E288E32060DB3400D4256F /* 57.wav in Resources */,
+				76E28A6C20636F2100D4256F /* mouth3.png in Resources */,
 				76E2889F2060DB3400D4256F /* 564.wav in Resources */,
 				76E288B72060DB3400D4256F /* 589.wav in Resources */,
 				76E2889D2060DB3400D4256F /* 570.wav in Resources */,
 				76E288D52060DB3400D4256F /* 5103.wav in Resources */,
+				7662CF8B2063894B00BB4195 /* microphone.png in Resources */,
 				76E289A12060DB4100D4256F /* 33.png in Resources */,
 				76E288AC2060DB3400D4256F /* 76.wav in Resources */,
 				76E2891A2060DB3400D4256F /* 22.wav in Resources */,
@@ -1195,6 +1268,7 @@
 				76E289292060DB3400D4256F /* 35.wav in Resources */,
 				76E289462060DB3400D4256F /* 522.wav in Resources */,
 				76E289472060DB3400D4256F /* 536.wav in Resources */,
+				7662CF8D20638AC100BB4195 /* bubble2.png in Resources */,
 				76E289892060DB4100D4256F /* 58.png in Resources */,
 				76E289BA2060DB4100D4256F /* 51.png in Resources */,
 				76E2891E2060DB3400D4256F /* 527.wav in Resources */,
@@ -1217,6 +1291,7 @@
 				76E288F62060DB3400D4256F /* 5105.wav in Resources */,
 				76E289092060DB3400D4256F /* 78.wav in Resources */,
 				76E2887C2060DB3400D4256F /* 738.wav in Resources */,
+				76E28A6B20636F2100D4256F /* mouth4.png in Resources */,
 				76E289042060DB3400D4256F /* 79.wav in Resources */,
 				76E289082060DB3400D4256F /* 5112.wav in Resources */,
 				76E289BC2060DB4100D4256F /* 53.png in Resources */,
@@ -1263,9 +1338,12 @@
 				76E2891D2060DB3400D4256F /* 719.wav in Resources */,
 				76E288E02060DB3400D4256F /* 546.wav in Resources */,
 				76E2890E2060DB3400D4256F /* 582.wav in Resources */,
+				76E28A7420636F4C00D4256F /* mouth5.png in Resources */,
+				76E289CF2062236100D4256F /* blueBackground.jpg in Resources */,
 				76E288B52060DB3400D4256F /* 228.wav in Resources */,
 				76E288B32060DB3400D4256F /* 572.wav in Resources */,
 				76E289072060DB3400D4256F /* 5106.wav in Resources */,
+				76E28A6220636D7B00D4256F /* blink.png in Resources */,
 				76E288E12060DB3400D4256F /* 220.wav in Resources */,
 				76E289242060DB3400D4256F /* 733.wav in Resources */,
 				76E2899E2060DB4100D4256F /* 37.png in Resources */,
@@ -1279,6 +1357,7 @@
 				76E288952060DB3400D4256F /* 728.wav in Resources */,
 				76E288DD2060DB3400D4256F /* 593.wav in Resources */,
 				76E288CB2060DB3400D4256F /* 574.wav in Resources */,
+				76E28A6520636D9200D4256F /* winkRight.png in Resources */,
 				76E288EB2060DB3400D4256F /* 580.wav in Resources */,
 				76E2887E2060DB3400D4256F /* 538.wav in Resources */,
 				76E2893E2060DB3400D4256F /* 26.wav in Resources */,
@@ -1288,6 +1367,7 @@
 				76E2892A2060DB3400D4256F /* 732.wav in Resources */,
 				76E288C02060DB3400D4256F /* 588.wav in Resources */,
 				76E289412060DB3400D4256F /* 318.wav in Resources */,
+				7662CF9120638D6000BB4195 /* soundOrangeDot.png in Resources */,
 				76328F3A205DC9AD003C23C5 /* LaunchScreen.storyboard in Resources */,
 				76E288D82060DB3400D4256F /* 222.wav in Resources */,
 				76E288C72060DB3400D4256F /* 59.wav in Resources */,
@@ -1301,7 +1381,9 @@
 				76E289A92060DB4100D4256F /* 19.png in Resources */,
 				76E289CA2061142900D4256F /* 0.png in Resources */,
 				76328F37205DC9AD003C23C5 /* Assets.xcassets in Resources */,
+				76E28A6620636D9200D4256F /* winkLeft.png in Resources */,
 				76E289262060DB3400D4256F /* 322.wav in Resources */,
+				76E28A7320636F4C00D4256F /* mouth7.png in Resources */,
 				76E289972060DB4100D4256F /* 38.png in Resources */,
 				76E288B82060DB3400D4256F /* 562.wav in Resources */,
 				76E2893D2060DB3400D4256F /* 721.wav in Resources */,
@@ -1344,6 +1426,7 @@
 				76E289862060DB4100D4256F /* 48.png in Resources */,
 				76E289202060DB3400D4256F /* 519.wav in Resources */,
 				76E288832060DB3400D4256F /* 317.wav in Resources */,
+				76E28A6E20636F2100D4256F /* mouth2.png in Resources */,
 				76E288862060DB3400D4256F /* 511.wav in Resources */,
 				76E288BB2060DB3400D4256F /* 73.wav in Resources */,
 				76E2890B2060DB3400D4256F /* 541.wav in Resources */,
@@ -1462,6 +1545,7 @@
 				76328F2D205DC9AD003C23C5 /* AppDelegate.swift in Sources */,
 				76E289C62060F21E00D4256F /* SpeechKitConfiguration.swift in Sources */,
 				76328F35205DC9AD003C23C5 /* SimulatedElon.xcdatamodeld in Sources */,
+				7662CF93206390A700BB4195 /* SEUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
