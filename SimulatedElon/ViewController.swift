@@ -51,6 +51,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     var skTransaction:SKTransaction?
     var mouthTimer: Timer?
     var microphoneTimer: Timer?
+    var bubbleTimer: Timer?
     
     @IBOutlet weak var requestButton: UIButton!
     @IBOutlet weak var elonImageView: UIImageView!
@@ -121,12 +122,12 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     }
     
     func displayBubbleTextsSequentially() {
-        let bubbleDuration: TimeInterval = 5.0
+        var bubbleDuration: TimeInterval = 5.0
         for i in 0..<self.bubbleTexts.count {
             let bubbleText = self.bubbleTexts[i]
-            var bubbleDelay = Double(i) * bubbleDuration
+            let bubbleDelay = Double(i) * bubbleDuration
             if (i == self.bubbleTexts.count-1) {
-                bubbleDelay = 100000
+                bubbleDuration = 100000
             }
             Timer.scheduledTimer(withTimeInterval: bubbleDelay, repeats: false, block: { (timer) in
                 self.showAnimatedBubble(text: bubbleText, duration: bubbleDuration)
@@ -135,6 +136,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     }
     
     func showAnimatedBubble(text: String, duration: TimeInterval) {
+        self.bubbleTimer?.invalidate()
+        
         bubbleLabel.alpha = 0
         bubbleImageView.alpha = 0
         bubbleLabel.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
@@ -150,7 +153,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
             })
         }
         
-        Timer.scheduledTimer(withTimeInterval: duration-0.5, repeats: false) { (timer) in
+        self.bubbleTimer = Timer.scheduledTimer(withTimeInterval: duration-0.5, repeats: false) { (timer) in
             OperationQueue.main.addOperation {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.bubbleLabel.alpha = 0
@@ -160,6 +163,17 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
                 })
             }
         }
+    }
+    
+    func hideAnimatedBubble() {
+        self.bubbleTimer?.invalidate()
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.bubbleLabel.alpha = 0
+            self.bubbleImageView.alpha = 0
+            self.bubbleLabel.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+            self.bubbleImageView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        })
     }
     
     func recognize() {
@@ -234,13 +248,14 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         let request = self.apiAi.textRequest()
         request?.query = [requestString]
         request?.setCompletionBlockSuccess({ (request, responseRaw) in
-//            print("response \(responseRaw!)")
             let response = responseRaw as! NSDictionary
             let result = response["result"] as! NSDictionary
             let fulfillment = result["fulfillment"] as! NSDictionary
             
+            print("--> ApiAI Response \(fulfillment)")
+            
             // Set basic text bubble
-            if let displayText = fulfillment["displayText"] as? String {
+            if let displayText = fulfillment["displayText"] as? String, displayText != "" {
                 self.bubbleTexts = [displayText]
                 self.displayBubbleTextsSequentially()
             }
