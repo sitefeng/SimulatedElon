@@ -32,6 +32,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     private var currentBackupAudios: [String] = []
     private var currentAudioIndex: Int = 0
     
+    private var bubbleTexts: [String] = []
+    
     private let totalImages: Int = 60
     private var currentImageIndex: Int = 1
     private var gestureRecStartingIndex: Int = 1
@@ -41,11 +43,14 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     private var mouthImageIndex: Int = 0
     private var mouthAnimationSpeed = 0.1
     
+    private var isElonRotating = false
+    
     var audioPlayer = AVAudioPlayer()
     var apiAi: ApiAI
     var skSession:SKSession?
     var skTransaction:SKTransaction?
     var mouthTimer: Timer?
+    var microphoneTimer: Timer?
     
     @IBOutlet weak var requestButton: UIButton!
     @IBOutlet weak var elonImageView: UIImageView!
@@ -53,7 +58,9 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     
     @IBOutlet weak var bubbleImageView: UIImageView!
     @IBOutlet weak var orangeDotImageView: UIImageView!
+    
     @IBOutlet weak var bubbleLabel: UILabel!
+    @IBOutlet weak var dictationTextLabel: UILabel!
     
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -71,27 +78,88 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         super.viewDidLoad()
         skSession = SKSession(url: URL(string: SKSServerUrl), appToken: SKSAppKey)
         
-        let panRec = UIPanGestureRecognizer(target: self, action: #selector(backgroundViewSwipped(recognizer:)))
-        panRec.delegate = self
-        backgroundView.addGestureRecognizer(panRec)
-        
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         } catch {
             print("Audio Session set category Failed")
         }
         
+        // Gesture Recs
+        let panRec = UIPanGestureRecognizer(target: self, action: #selector(backgroundViewSwipped(recognizer:)))
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(elonImageTapped))
+        elonImageView.addGestureRecognizer(tapRec)
+        elonImageView.addGestureRecognizer(panRec)
+        
+        // Setup Views
+        
+        self.bubbleTexts = ["Nice to meet you! I am Simulated Elon with a virtual conciousness.",
+                            "Tap the microphone button to ask a question, tap on my head to stop the audio at any time.",
+                            "What do you wanna talk about today?"]
+        self.displayBubbleTextsSequentially()
+        
+        dictationTextLabel.text = "Tap on the microphone to begin..."
+        
         elonImageView.layer.shadowRadius = 30
         elonImageView.layer.shadowColor = UIColor.black.cgColor
         elonImageView.layer.shadowOffset = CGSize(width: 16, height: 16)
         elonImageView.layer.shadowOpacity = 0.8
         
+        requestButton.layer.shadowRadius = 10
+        requestButton.layer.shadowColor = UIColor.black.cgColor
+        requestButton.layer.shadowOffset = CGSize(width: 8, height: 8)
+        requestButton.layer.shadowOpacity = 0.8
+        
+        orangeDotImageView.alpha = 0
+        
+        
         // Start animations
         self.startBlinkAnimations()
         self.startMouthAnimations()
         
-        // Play Audio
-        playAudioFileWithId(audioFileId: "729")
+        // Play Intro Audio
+//        playAudioFileWithId(audioFileId: "")
+    }
+    
+    func displayBubbleTextsSequentially() {
+        let bubbleDuration: TimeInterval = 5.0
+        for i in 0..<self.bubbleTexts.count {
+            let bubbleText = self.bubbleTexts[i]
+            var bubbleDelay = Double(i) * bubbleDuration
+            if (i == self.bubbleTexts.count-1) {
+                bubbleDelay = 100000
+            }
+            Timer.scheduledTimer(withTimeInterval: bubbleDelay, repeats: false, block: { (timer) in
+                self.showAnimatedBubble(text: bubbleText, duration: bubbleDuration)
+            })
+        }
+    }
+    
+    func showAnimatedBubble(text: String, duration: TimeInterval) {
+        bubbleLabel.alpha = 0
+        bubbleImageView.alpha = 0
+        bubbleLabel.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        bubbleImageView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        
+        OperationQueue.main.addOperation {
+            self.bubbleLabel.text = text
+            UIView.animate(withDuration: 0.5, animations: {
+                self.bubbleLabel.alpha = 1.0
+                self.bubbleImageView.alpha = 1.0
+                self.bubbleLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
+                self.bubbleImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: duration-0.5, repeats: false) { (timer) in
+            OperationQueue.main.addOperation {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.bubbleLabel.alpha = 0
+                    self.bubbleImageView.alpha = 0
+                    self.bubbleLabel.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+                    self.bubbleImageView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+                })
+            }
+        }
     }
     
     func recognize() {
@@ -170,7 +238,12 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
             let response = responseRaw as! NSDictionary
             let result = response["result"] as! NSDictionary
             let fulfillment = result["fulfillment"] as! NSDictionary
-//            let displayText = fulfillment["displayText"]
+            
+            // Set basic text bubble
+            if let displayText = fulfillment["displayText"] as? String {
+                self.bubbleTexts = [displayText]
+                self.displayBubbleTextsSequentially()
+            }
             
             // Set current audio
             self.currentMainAudios = [self.getRandomStartingAudioId(), "735"]
@@ -199,8 +272,13 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
                 // Start playing
                 self.startPlayingAudioSequence()
                 
-            } else {
+                // Fill bubble texts
+                if let inputBubbleTexts = data["bubbleTexts"] as? Array<String> {
+                    self.bubbleTexts = inputBubbleTexts
+                    self.displayBubbleTextsSequentially()
+                }
                 
+            } else { // No data field
                 // Play I don't know audio
                 self.startPlayingAudioSequence()
             }
@@ -213,18 +291,20 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     }
     
     
-    // Animations
+    // MARK - Animations
     func startBlinkAnimations() {
         let waitInterval = 0.5 + Double(arc4random() % 6)
         Timer.scheduledTimer(withTimeInterval: waitInterval, repeats: false, block: { (timer) in
-            OperationQueue.main.addOperation {
-                self.elonImageView.image = UIImage(named: "blink.png")
-            }
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { (timer) in
+            if (!self.isElonRotating) {
                 OperationQueue.main.addOperation {
-                    self.elonImageView.image = UIImage(named: "1.png")
+                    self.elonImageView.image = UIImage(named: "blink.png")
                 }
-            })
+                Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { (timer) in
+                    OperationQueue.main.addOperation {
+                        self.elonImageView.image = UIImage(named: "1.png")
+                    }
+                })
+            }
             
             self.startBlinkAnimations()
         })
@@ -260,11 +340,67 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         }
     }
     
+    func startMicrophoneAnimations() {
+        self.requestButton.setImage(UIImage(named: "microphoneActivated.png"), for: .normal)
+        self.microphoneTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (timer) in
+            UIView.animate(withDuration: 0.04, animations: {
+                if self.skTransaction != nil {
+                    self.orangeDotImageView.alpha = CGFloat(self.skTransaction!.audioLevel / 100 - 0.1) * 1.111
+                } else {
+                    self.orangeDotImageView.alpha = 0
+                }
+            })
+        }
+    }
+    
+    func stopMicrophoneAnimations() {
+        self.orangeDotImageView.alpha = 0
+        self.requestButton.setImage(UIImage(named: "microphone.png"), for: .normal)
+        self.microphoneTimer?.invalidate()
+    }
+    
     
     // MARK - Callbacks
 
     @IBAction func requestButtonTapped(_ sender: Any) {
-        recognize()
+        if currentStatus == .Listening {
+            audioPlayer.stop()
+            stopRecording()
+        } else {
+            recognize()
+            
+            // Fade out dictation text
+            UIView.animate(withDuration: 0.5, animations: {
+                self.dictationTextLabel.alpha = 0.0
+            }, completion: { _ in
+                self.dictationTextLabel.text = ""
+            })
+        }
+    }
+    
+    @objc func elonImageTapped() {
+        self.elonImageView.image = UIImage(named: "surprise")
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+            self.elonImageView.image = UIImage(named: "mouth4")
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.55, repeats: false) { (timer) in
+            self.elonImageView.image = UIImage(named: "mouth3")
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false) { (timer) in
+            self.elonImageView.image = UIImage(named: "mouth2")
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.65, repeats: false) { (timer) in
+            self.elonImageView.image = UIImage(named: "mouth1")
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false) { (timer) in
+            self.elonImageView.image = UIImage(named: "1")
+        }
+        
+        if currentStatus == .Talking {
+            currentStatus = .Waiting
+            audioPlayer.stop()
+        }
+       
     }
     
     // MARK - AudioDelegate
@@ -298,6 +434,9 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         
         if (recognizer.state == .began) {
             gestureRecStartingIndex = self.currentImageIndex
+            isElonRotating = true
+        } else if recognizer.state == .ended || recognizer.state == .cancelled || recognizer.state == .failed {
+            isElonRotating = false
         }
     
         let nextIndex = self.gestureRecStartingIndex - Int(translation.x / 2)
@@ -311,16 +450,26 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     // MARK: - SKTransactionDelegate
     
     func transactionDidBeginRecording(_ transaction: SKTransaction!) {
-        // Listening
+
+        startMicrophoneAnimations()
     }
     
     func transactionDidFinishRecording(_ transaction: SKTransaction!) {
-        // Processing request
+
+        stopMicrophoneAnimations()
     }
     
     func transaction(_ transaction: SKTransaction!, didReceive recognition: SKRecognition!) {
         if let recognizedText = recognition.text {
-            print("*********** Did Receive recognition \(recognition.text)")
+            print("Did Receive Recognition: \(recognition.text)")
+            OperationQueue.main.addOperation {
+                // Fade in dictation text
+                self.dictationTextLabel.text = recognizedText
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.dictationTextLabel.alpha = 1.0
+                });
+            }
+            
             sendDialogflowRequest(requestString: recognizedText)
         }
     }

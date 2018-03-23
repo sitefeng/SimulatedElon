@@ -16,6 +16,10 @@
 		76328F3A205DC9AD003C23C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76328F38205DC9AD003C23C5 /* LaunchScreen.storyboard */; };
 		76328F45205DC9AD003C23C5 /* SimulatedElonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76328F44205DC9AD003C23C5 /* SimulatedElonTests.swift */; };
 		76328F50205DC9AD003C23C5 /* SimulatedElonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76328F4F205DC9AD003C23C5 /* SimulatedElonUITests.swift */; };
+		763F91602064C61500902513 /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F915F2064C61400902513 /* settingsIcon.png */; };
+		763F91622064CE7F00902513 /* surprise.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F91612064CE7F00902513 /* surprise.png */; };
+		763F91642064D25B00902513 /* rocket1.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F91632064D25B00902513 /* rocket1.png */; };
+		763F91662064D26B00902513 /* rocket2.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F91652064D26B00902513 /* rocket2.png */; };
 		7662CF872063863200BB4195 /* bubble1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF862063863200BB4195 /* bubble1.png */; };
 		7662CF8B2063894B00BB4195 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8A2063894A00BB4195 /* microphone.png */; };
 		7662CF8D20638AC100BB4195 /* bubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8C20638AC000BB4195 /* bubble2.png */; };
@@ -345,6 +349,10 @@
 		76328F4B205DC9AD003C23C5 /* SimulatedElonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimulatedElonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76328F4F205DC9AD003C23C5 /* SimulatedElonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatedElonUITests.swift; sourceTree = "<group>"; };
 		76328F51205DC9AD003C23C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		763F915F2064C61400902513 /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
+		763F91612064CE7F00902513 /* surprise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = surprise.png; sourceTree = "<group>"; };
+		763F91632064D25B00902513 /* rocket1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket1.png; sourceTree = "<group>"; };
+		763F91652064D26B00902513 /* rocket2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rocket2.png; path = ../../../com.visualpharm.Icons8/office/Transport/rocket2.png; sourceTree = "<group>"; };
 		7662CF862063863200BB4195 /* bubble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble1.png; sourceTree = "<group>"; };
 		7662CF8A2063894A00BB4195 /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
 		7662CF8C20638AC000BB4195 /* bubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble2.png; sourceTree = "<group>"; };
@@ -972,6 +980,7 @@
 		76E289482060DB4100D4256F /* elonImages */ = {
 			isa = PBXGroup;
 			children = (
+				763F91612064CE7F00902513 /* surprise.png */,
 				76E28A752063707D00D4256F /* mouth0.png */,
 				76E28A6920636F2100D4256F /* mouth1.png */,
 				76E28A6A20636F2100D4256F /* mouth2.png */,
@@ -1051,6 +1060,9 @@
 		76E289CD2062233300D4256F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				763F91632064D25B00902513 /* rocket1.png */,
+				763F91652064D26B00902513 /* rocket2.png */,
+				763F915F2064C61400902513 /* settingsIcon.png */,
 				7662CF9020638D5F00BB4195 /* soundOrangeDot.png */,
 				7662CF8E20638D4B00BB4195 /* microphoneActivated.png */,
 				7662CF8C20638AC000BB4195 /* bubble2.png */,
@@ -1222,6 +1234,7 @@
 				7662CF8F20638D4B00BB4195 /* microphoneActivated.png in Resources */,
 				76E289CC2062232E00D4256F /* cubeBackground.jpg in Resources */,
 				76E2892D2060DB3400D4256F /* 518.wav in Resources */,
+				763F91662064D26B00902513 /* rocket2.png in Resources */,
 				76E289212060DB3400D4256F /* 525.wav in Resources */,
 				76E288F82060DB3400D4256F /* 556.wav in Resources */,
 				76E288CC2060DB3400D4256F /* 592.wav in Resources */,
@@ -1273,6 +1286,7 @@
 				76E289BA2060DB4100D4256F /* 51.png in Resources */,
 				76E2891E2060DB3400D4256F /* 527.wav in Resources */,
 				76E288772060DB3400D4256F /* 513.wav in Resources */,
+				763F91642064D25B00902513 /* rocket1.png in Resources */,
 				76E289182060DB3400D4256F /* 321.wav in Resources */,
 				76E288FA2060DB3400D4256F /* 224.wav in Resources */,
 				76E2893B2060DB3400D4256F /* 523.wav in Resources */,
@@ -1410,6 +1424,7 @@
 				76E289392060DB3400D4256F /* 521.wav in Resources */,
 				76E288D32060DB3400D4256F /* 54.wav in Resources */,
 				76E288962060DB3400D4256F /* 13.wav in Resources */,
+				763F91622064CE7F00902513 /* surprise.png in Resources */,
 				76E289282060DB3400D4256F /* 21.wav in Resources */,
 				76E288AD2060DB3400D4256F /* 62.wav in Resources */,
 				76E289232060DB3400D4256F /* 727.wav in Resources */,
@@ -1448,6 +1463,7 @@
 				76E288982060DB3400D4256F /* 311.wav in Resources */,
 				76E288AE2060DB3400D4256F /* 5108.wav in Resources */,
 				76E2890C2060DB3400D4256F /* 227.wav in Resources */,
+				763F91602064C61500902513 /* settingsIcon.png in Resources */,
 				76E289342060DB3400D4256F /* 333.wav in Resources */,
 				76E2898B2060DB4100D4256F /* 9.png in Resources */,
 				76E288DB2060DB3400D4256F /* 578.wav in Resources */,
