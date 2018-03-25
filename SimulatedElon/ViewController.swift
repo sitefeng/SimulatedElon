@@ -77,7 +77,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        skSession = SKSession(url: URL(string: SKSServerUrl), appToken: SKSAppKey)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        skSession = appDelegate.speechKitSession
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -304,11 +305,11 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
                 } else {
                     // Play I don't know audio
                     if (arc4random() % 10 > 1) {
-                        self.currentMainAudios = ["735"]
+                        self.currentMainAudios = [self.getRandomItemFromArray(array: ["735", "738"])]
                         self.startPlayingAudioSequence()
                     }
                     
-                    self.bubbleTexts = ["uhh.. No idea"]
+                    self.bubbleTexts = [self.getRandomItemFromArray(array: ["uhh..", "uhh.. no idea", "Not sure..", "I'm not not quite sure"])]
                     self.displayBubbleTextsSequentially()
                 }
                 

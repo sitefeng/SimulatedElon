@@ -36,6 +36,7 @@
 		763F920E20672AF500902513 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763F920D20672AF500902513 /* ChatBubbleView.swift */; };
 		763F921020672B4700902513 /* ChatBubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763F920F20672B4700902513 /* ChatBubbleView.xib */; };
 		763F921220674D3D00902513 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763F921120674D3D00902513 /* QuestionViewController.swift */; };
+		763F9217206761A100902513 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 763F9216206761A100902513 /* GoogleService-Info.plist */; };
 		7662CF872063863200BB4195 /* bubble1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF862063863200BB4195 /* bubble1.png */; };
 		7662CF8B2063894B00BB4195 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8A2063894A00BB4195 /* microphone.png */; };
 		7662CF8D20638AC100BB4195 /* bubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8C20638AC000BB4195 /* bubble2.png */; };
@@ -385,6 +386,7 @@
 		763F920D20672AF500902513 /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
 		763F920F20672B4700902513 /* ChatBubbleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatBubbleView.xib; sourceTree = "<group>"; };
 		763F921120674D3D00902513 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		763F9216206761A100902513 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7662CF862063863200BB4195 /* bubble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble1.png; sourceTree = "<group>"; };
 		7662CF8A2063894A00BB4195 /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
 		7662CF8C20638AC000BB4195 /* bubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble2.png; sourceTree = "<group>"; };
@@ -782,6 +784,7 @@
 				76E287A52060DB3400D4256F /* elonAudio */,
 				76328F38205DC9AD003C23C5 /* LaunchScreen.storyboard */,
 				76328F3B205DC9AD003C23C5 /* Info.plist */,
+				763F9216206761A100902513 /* GoogleService-Info.plist */,
 				76328F33205DC9AD003C23C5 /* SimulatedElon.xcdatamodeld */,
 			);
 			path = SimulatedElon;
@@ -1410,6 +1413,7 @@
 				76E288B52060DB3400D4256F /* 228.wav in Resources */,
 				76E288B32060DB3400D4256F /* 572.wav in Resources */,
 				76E289072060DB3400D4256F /* 5106.wav in Resources */,
+				763F9217206761A100902513 /* GoogleService-Info.plist in Resources */,
 				76E28A6220636D7B00D4256F /* blink.png in Resources */,
 				76E288E12060DB3400D4256F /* 220.wav in Resources */,
 				76E289242060DB3400D4256F /* 733.wav in Resources */,
@@ -1583,14 +1587,24 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SimulatedElon/Pods-SimulatedElon-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ApiAI/ApiAI.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Mixpanel/Mixpanel.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ApiAI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

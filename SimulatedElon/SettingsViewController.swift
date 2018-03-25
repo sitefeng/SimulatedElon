@@ -24,6 +24,8 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UINavigationItem
+        
         self.view.backgroundColor = UIColor.white
         
     }

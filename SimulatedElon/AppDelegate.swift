@@ -10,23 +10,33 @@ import UIKit
 import CoreData
 import ApiAI
 import Mixpanel
+import Firebase
+import SpeechKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let apiAI = ApiAI.shared()
-    let mixpanel = Mixpanel.sharedInstance(withToken: "f90c9dbd70fcc0da45cee7d9572cb5a5", launchOptions: [:], trackCrashes: true, automaticPushTracking: true)
+    var mixpanel = Mixpanel()
+    var speechKitSession = SKSession()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Initializing Frameworks *******
+        // SpeechKit
+        speechKitSession = SKSession(url: URL(string: SKSServerUrl), appToken: SKSAppKey)
+        
+        // Firebase
+        FirebaseApp.configure()
+        
         // ApiAI
         let configuration = AIDefaultConfiguration()
         configuration.clientAccessToken = "63c1805aea5f4157bb90878a7a99e69c"
         self.apiAI?.configuration = configuration
         
-        // mixpanel
+        // Mixpanel
+        mixpanel = Mixpanel.sharedInstance(withToken: "f90c9dbd70fcc0da45cee7d9572cb5a5", launchOptions: [:], trackCrashes: true, automaticPushTracking: true)
         mixpanel.track("app_launch")
         
         
