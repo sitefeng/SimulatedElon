@@ -20,6 +20,22 @@
 		763F91622064CE7F00902513 /* surprise.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F91612064CE7F00902513 /* surprise.png */; };
 		763F91642064D25B00902513 /* rocket1.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F91632064D25B00902513 /* rocket1.png */; };
 		763F91662064D26B00902513 /* rocket2.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F91652064D26B00902513 /* rocket2.png */; };
+		763F91F42066466300902513 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763F91F32066466300902513 /* SettingsViewController.swift */; };
+		763F91F520670E3600902513 /* PureLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 763F91F620670E3600902513 /* PureLayout.framework */; };
+		763F91F82067118D00902513 /* EnhancedSimulationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763F91F72067118D00902513 /* EnhancedSimulationCard.swift */; };
+		763F91FA206711A600902513 /* EnhancedSimulationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763F91F9206711A600902513 /* EnhancedSimulationCard.xib */; };
+		763F91FC2067123B00902513 /* robot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F91FB2067123B00902513 /* robot1.png */; };
+		763F91FE2067164800902513 /* LifetimeVIPCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763F91FD2067164800902513 /* LifetimeVIPCard.swift */; };
+		763F92002067165B00902513 /* LifetimeVIPCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763F91FF2067165B00902513 /* LifetimeVIPCard.xib */; };
+		763F92022067179B00902513 /* doubleRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F92012067179A00902513 /* doubleRight.png */; };
+		763F920420671D6B00902513 /* robot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F920320671D6B00902513 /* robot2.png */; };
+		763F920620671F2B00902513 /* ContactSupportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763F920520671F2B00902513 /* ContactSupportCard.swift */; };
+		763F920820671F3900902513 /* ContactSupportCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763F920720671F3900902513 /* ContactSupportCard.xib */; };
+		763F920A2067260500902513 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F92092067260400902513 /* info.png */; };
+		763F920C206726AC00902513 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 763F920B206726AB00902513 /* question.png */; };
+		763F920E20672AF500902513 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763F920D20672AF500902513 /* ChatBubbleView.swift */; };
+		763F921020672B4700902513 /* ChatBubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763F920F20672B4700902513 /* ChatBubbleView.xib */; };
+		763F921220674D3D00902513 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763F921120674D3D00902513 /* QuestionViewController.swift */; };
 		7662CF872063863200BB4195 /* bubble1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF862063863200BB4195 /* bubble1.png */; };
 		7662CF8B2063894B00BB4195 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8A2063894A00BB4195 /* microphone.png */; };
 		7662CF8D20638AC100BB4195 /* bubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8C20638AC000BB4195 /* bubble2.png */; };
@@ -353,6 +369,22 @@
 		763F91612064CE7F00902513 /* surprise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = surprise.png; sourceTree = "<group>"; };
 		763F91632064D25B00902513 /* rocket1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket1.png; sourceTree = "<group>"; };
 		763F91652064D26B00902513 /* rocket2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rocket2.png; path = ../../../com.visualpharm.Icons8/office/Transport/rocket2.png; sourceTree = "<group>"; };
+		763F91F32066466300902513 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		763F91F620670E3600902513 /* PureLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PureLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		763F91F72067118D00902513 /* EnhancedSimulationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedSimulationCard.swift; sourceTree = "<group>"; };
+		763F91F9206711A600902513 /* EnhancedSimulationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnhancedSimulationCard.xib; sourceTree = "<group>"; };
+		763F91FB2067123B00902513 /* robot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = robot1.png; sourceTree = "<group>"; };
+		763F91FD2067164800902513 /* LifetimeVIPCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeVIPCard.swift; sourceTree = "<group>"; };
+		763F91FF2067165B00902513 /* LifetimeVIPCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LifetimeVIPCard.xib; sourceTree = "<group>"; };
+		763F92012067179A00902513 /* doubleRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doubleRight.png; sourceTree = "<group>"; };
+		763F920320671D6B00902513 /* robot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = robot2.png; sourceTree = "<group>"; };
+		763F920520671F2B00902513 /* ContactSupportCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSupportCard.swift; sourceTree = "<group>"; };
+		763F920720671F3900902513 /* ContactSupportCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactSupportCard.xib; sourceTree = "<group>"; };
+		763F92092067260400902513 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		763F920B206726AB00902513 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
+		763F920D20672AF500902513 /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
+		763F920F20672B4700902513 /* ChatBubbleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatBubbleView.xib; sourceTree = "<group>"; };
+		763F921120674D3D00902513 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		7662CF862063863200BB4195 /* bubble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble1.png; sourceTree = "<group>"; };
 		7662CF8A2063894A00BB4195 /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
 		7662CF8C20638AC000BB4195 /* bubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble2.png; sourceTree = "<group>"; };
@@ -656,6 +688,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				763F91F520670E3600902513 /* PureLayout.framework in Frameworks */,
 				76E289C42060E02100D4256F /* AudioToolbox.framework in Frameworks */,
 				76E289C82060F26B00D4256F /* SpeechKit.framework in Frameworks */,
 				76E289C22060E01B00D4256F /* AVFoundation.framework in Frameworks */,
@@ -684,6 +717,7 @@
 		091DBBF31E958078A8C218BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				763F91F620670E3600902513 /* PureLayout.framework */,
 				76E289C72060F26B00D4256F /* SpeechKit.framework */,
 				76E289C32060E02100D4256F /* AudioToolbox.framework */,
 				76E289C12060E01B00D4256F /* AVFoundation.framework */,
@@ -729,8 +763,18 @@
 			children = (
 				76328F2C205DC9AD003C23C5 /* AppDelegate.swift */,
 				76328F2E205DC9AD003C23C5 /* ViewController.swift */,
-				76E289C52060F21E00D4256F /* SpeechKitConfiguration.swift */,
 				76328F30205DC9AD003C23C5 /* Main.storyboard */,
+				763F920D20672AF500902513 /* ChatBubbleView.swift */,
+				763F920F20672B4700902513 /* ChatBubbleView.xib */,
+				763F91F32066466300902513 /* SettingsViewController.swift */,
+				763F921120674D3D00902513 /* QuestionViewController.swift */,
+				763F91FD2067164800902513 /* LifetimeVIPCard.swift */,
+				763F91FF2067165B00902513 /* LifetimeVIPCard.xib */,
+				763F920520671F2B00902513 /* ContactSupportCard.swift */,
+				763F920720671F3900902513 /* ContactSupportCard.xib */,
+				763F91F72067118D00902513 /* EnhancedSimulationCard.swift */,
+				763F91F9206711A600902513 /* EnhancedSimulationCard.xib */,
+				76E289C52060F21E00D4256F /* SpeechKitConfiguration.swift */,
 				7662CF92206390A700BB4195 /* SEUtility.swift */,
 				76328F36205DC9AD003C23C5 /* Assets.xcassets */,
 				76E289CD2062233300D4256F /* images */,
@@ -1060,6 +1104,11 @@
 		76E289CD2062233300D4256F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				763F920B206726AB00902513 /* question.png */,
+				763F92092067260400902513 /* info.png */,
+				763F92012067179A00902513 /* doubleRight.png */,
+				763F920320671D6B00902513 /* robot2.png */,
+				763F91FB2067123B00902513 /* robot1.png */,
 				763F91632064D25B00902513 /* rocket1.png */,
 				763F91652064D26B00902513 /* rocket2.png */,
 				763F915F2064C61400902513 /* settingsIcon.png */,
@@ -1186,6 +1235,7 @@
 			files = (
 				76E289C02060DB4100D4256F /* 52.png in Resources */,
 				76E2898D2060DB4100D4256F /* 28.png in Resources */,
+				763F920420671D6B00902513 /* robot2.png in Resources */,
 				76E289AE2060DB4100D4256F /* 5.png in Resources */,
 				76E289902060DB4100D4256F /* 17.png in Resources */,
 				76E288D22060DB3400D4256F /* 40.wav in Resources */,
@@ -1224,6 +1274,7 @@
 				76E289A22060DB4100D4256F /* 32.png in Resources */,
 				76E288BE2060DB3400D4256F /* 211.wav in Resources */,
 				76E288F52060DB3400D4256F /* 5111.wav in Resources */,
+				763F920A2067260500902513 /* info.png in Resources */,
 				76E289152060DB3400D4256F /* 37.wav in Resources */,
 				76E288CE2060DB3400D4256F /* 579.wav in Resources */,
 				76E288A72060DB3400D4256F /* 598.wav in Resources */,
@@ -1240,6 +1291,7 @@
 				76E288CC2060DB3400D4256F /* 592.wav in Resources */,
 				76E289B22060DB4100D4256F /* 7.png in Resources */,
 				76E289852060DB4100D4256F /* 60.png in Resources */,
+				763F920820671F3900902513 /* ContactSupportCard.xib in Resources */,
 				76E288C32060DB3400D4256F /* 561.wav in Resources */,
 				76E28A6D20636F2100D4256F /* mouth1.png in Resources */,
 				76E2889A2060DB3400D4256F /* 729.wav in Resources */,
@@ -1344,6 +1396,7 @@
 				76E288F22060DB3400D4256F /* 5110.wav in Resources */,
 				76E2888D2060DB3400D4256F /* 312.wav in Resources */,
 				76E288D42060DB3400D4256F /* 5102.wav in Resources */,
+				763F91FA206711A600902513 /* EnhancedSimulationCard.xib in Resources */,
 				76E288B12060DB3400D4256F /* 77.wav in Resources */,
 				76E288802060DB3400D4256F /* 712.wav in Resources */,
 				76E288C42060DB3400D4256F /* 549.wav in Resources */,
@@ -1363,6 +1416,7 @@
 				76E2899E2060DB4100D4256F /* 37.png in Resources */,
 				76E288AF2060DB3400D4256F /* 5109.wav in Resources */,
 				76E288EC2060DB3400D4256F /* 594.wav in Resources */,
+				763F91FC2067123B00902513 /* robot1.png in Resources */,
 				76E288F02060DB3400D4256F /* 219.wav in Resources */,
 				76E288DC2060DB3400D4256F /* 587.wav in Resources */,
 				76E288E92060DB3400D4256F /* 221.wav in Resources */,
@@ -1398,6 +1452,7 @@
 				76E28A6620636D9200D4256F /* winkLeft.png in Resources */,
 				76E289262060DB3400D4256F /* 322.wav in Resources */,
 				76E28A7320636F4C00D4256F /* mouth7.png in Resources */,
+				763F92022067179B00902513 /* doubleRight.png in Resources */,
 				76E289972060DB4100D4256F /* 38.png in Resources */,
 				76E288B82060DB3400D4256F /* 562.wav in Resources */,
 				76E2893D2060DB3400D4256F /* 721.wav in Resources */,
@@ -1460,6 +1515,7 @@
 				76E288812060DB3400D4256F /* 29.wav in Resources */,
 				76E289B92060DB4100D4256F /* 3.png in Resources */,
 				76E288B22060DB3400D4256F /* 214.wav in Resources */,
+				763F92002067165B00902513 /* LifetimeVIPCard.xib in Resources */,
 				76E288982060DB3400D4256F /* 311.wav in Resources */,
 				76E288AE2060DB3400D4256F /* 5108.wav in Resources */,
 				76E2890C2060DB3400D4256F /* 227.wav in Resources */,
@@ -1475,7 +1531,9 @@
 				76E288D92060DB3400D4256F /* 544.wav in Resources */,
 				76E288892060DB3400D4256F /* 529.wav in Resources */,
 				76E288A82060DB3400D4256F /* 229.wav in Resources */,
+				763F921020672B4700902513 /* ChatBubbleView.xib in Resources */,
 				76E288D02060DB3400D4256F /* 223.wav in Resources */,
+				763F920C206726AC00902513 /* question.png in Resources */,
 				76E2890A2060DB3400D4256F /* 569.wav in Resources */,
 				76E288922060DB3400D4256F /* 514.wav in Resources */,
 				76E288932060DB3400D4256F /* 516.wav in Resources */,
@@ -1525,10 +1583,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SimulatedElon/Pods-SimulatedElon-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ApiAI/ApiAI.framework",
+				"${BUILT_PRODUCTS_DIR}/Mixpanel/Mixpanel.framework",
+				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ApiAI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1557,11 +1619,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				763F91FE2067164800902513 /* LifetimeVIPCard.swift in Sources */,
 				76328F2F205DC9AD003C23C5 /* ViewController.swift in Sources */,
 				76328F2D205DC9AD003C23C5 /* AppDelegate.swift in Sources */,
 				76E289C62060F21E00D4256F /* SpeechKitConfiguration.swift in Sources */,
+				763F920E20672AF500902513 /* ChatBubbleView.swift in Sources */,
 				76328F35205DC9AD003C23C5 /* SimulatedElon.xcdatamodeld in Sources */,
+				763F91F82067118D00902513 /* EnhancedSimulationCard.swift in Sources */,
 				7662CF93206390A700BB4195 /* SEUtility.swift in Sources */,
+				763F920620671F2B00902513 /* ContactSupportCard.swift in Sources */,
+				763F91F42066466300902513 /* SettingsViewController.swift in Sources */,
+				763F921220674D3D00902513 /* QuestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

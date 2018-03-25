@@ -105,11 +105,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         elonImageView.layer.shadowOffset = CGSize(width: 16, height: 16)
         elonImageView.layer.shadowOpacity = 0.8
         
-        requestButton.layer.shadowRadius = 10
-        requestButton.layer.shadowColor = UIColor.black.cgColor
-        requestButton.layer.shadowOffset = CGSize(width: 8, height: 8)
-        requestButton.layer.shadowOpacity = 0.8
-        
         orangeDotImageView.alpha = 0
         
         
@@ -127,7 +122,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
             let bubbleText = self.bubbleTexts[i]
             let bubbleDelay = Double(i) * bubbleDuration
             if (i == self.bubbleTexts.count-1) {
-                bubbleDuration = 100000
+                bubbleDuration = 8
             }
             Timer.scheduledTimer(withTimeInterval: bubbleDelay, repeats: false, block: { (timer) in
                 self.showAnimatedBubble(text: bubbleText, duration: bubbleDuration)
@@ -237,7 +232,9 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     
     func startPlayingAudioSequence() {
         currentAudioIndex = 0
-        playAudioFileWithId(audioFileId: currentMainAudios[currentAudioIndex])
+        if (currentMainAudios.count > 0) {
+            playAudioFileWithId(audioFileId: currentMainAudios[currentAudioIndex])
+        }
     }
     
     private func sendTestDialogflowRequest() {
@@ -254,14 +251,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
             
             print("--> ApiAI Response \(fulfillment)")
             
-            // Set basic text bubble
-            if let displayText = fulfillment["displayText"] as? String, displayText != "" {
-                self.bubbleTexts = [displayText]
-                self.displayBubbleTextsSequentially()
-            }
-            
             // Set current audio
-            self.currentMainAudios = [self.getRandomStartingAudioId(), "735"]
+            self.currentMainAudios = []
             self.currentBackupAudios = []
             if let data = fulfillment["data"] as? NSDictionary {
                 
@@ -270,7 +261,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
                     
                     for mainAudio in mainAudioIds {
                         self.currentMainAudios.append(mainAudio)
-                        self.currentMainAudios.append(self.getRandomConnectingAudioId())
+                        self.currentMainAudios.append(self.getRandomItemFromArray(array: self.connectingAudioIds))
                     }
                     
                     if self.currentMainAudios.count > 1 {
@@ -288,14 +279,39 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
                 self.startPlayingAudioSequence()
                 
                 // Fill bubble texts
-                if let inputBubbleTexts = data["bubbleTexts"] as? Array<String> {
+                if let displayText = fulfillment["displayText"] as? String, displayText != "" {
+                    self.bubbleTexts = [displayText]
+                    self.displayBubbleTextsSequentially()
+                }
+                
+                // if exists, "bubbleTexts" data overwrites default "displayText" data
+                if let inputBubbleTexts = data["bubbleTexts"] as? Array<String>, inputBubbleTexts.count > 0 {
                     self.bubbleTexts = inputBubbleTexts
                     self.displayBubbleTextsSequentially()
                 }
                 
+                // Perform action
+                if let inputAction = data["action"] as? String {
+                    self.performRequestedAction(action: inputAction)
+                }
+                
             } else { // No data field
-                // Play I don't know audio
-                self.startPlayingAudioSequence()
+                
+                // Set basic text bubble
+                if let displayText = fulfillment["displayText"] as? String, displayText != "" {
+                    self.bubbleTexts = [displayText]
+                    self.displayBubbleTextsSequentially()
+                } else {
+                    // Play I don't know audio
+                    if (arc4random() % 10 > 1) {
+                        self.currentMainAudios = ["735"]
+                        self.startPlayingAudioSequence()
+                    }
+                    
+                    self.bubbleTexts = ["uhh.. No idea"]
+                    self.displayBubbleTextsSequentially()
+                }
+                
             }
             
             
@@ -305,8 +321,48 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         self.apiAi.enqueue(request)
     }
     
+    // MARK - Actions
+    func performRequestedAction(action: String) {
+        switch(action) {
+        case "open_mouth":
+            self.playOpenMouthAnimation()
+        case "close_eyes":
+            self.playCloseEyesAnimation()
+        default:
+            print("hi")
+        }
+    }
+    
     
     // MARK - Animations
+    func playOpenMouthAnimation() {
+        self.elonImageView.image = UIImage(named: "surprise")
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+            self.elonImageView.image = UIImage(named: "mouth4")
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.55, repeats: false) { (timer) in
+            self.elonImageView.image = UIImage(named: "mouth3")
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false) { (timer) in
+            self.elonImageView.image = UIImage(named: "mouth2")
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.65, repeats: false) { (timer) in
+            self.elonImageView.image = UIImage(named: "mouth1")
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false) { (timer) in
+            self.elonImageView.image = UIImage(named: "1")
+        }
+    }
+    
+    func playCloseEyesAnimation() {
+        self.elonImageView.image = UIImage(named: "blink.png")
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer) in
+            OperationQueue.main.addOperation {
+                self.elonImageView.image = UIImage(named: "1.png")
+            }
+        })
+    }
+    
     func startBlinkAnimations() {
         let waitInterval = 0.5 + Double(arc4random() % 6)
         Timer.scheduledTimer(withTimeInterval: waitInterval, repeats: false, block: { (timer) in
@@ -379,12 +435,15 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
 
     @IBAction func requestButtonTapped(_ sender: Any) {
         if currentStatus == .Listening {
-            audioPlayer.stop()
             stopRecording()
         } else {
+            if currentStatus == .Talking {
+                audioPlayer.stop()
+            }
+            
             recognize()
             
-            // Fade out dictation text
+            // Fade out previous dictation text
             UIView.animate(withDuration: 0.5, animations: {
                 self.dictationTextLabel.alpha = 0.0
             }, completion: { _ in
@@ -394,29 +453,32 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     }
     
     @objc func elonImageTapped() {
-        self.elonImageView.image = UIImage(named: "surprise")
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
-            self.elonImageView.image = UIImage(named: "mouth4")
-        }
-        Timer.scheduledTimer(withTimeInterval: 0.55, repeats: false) { (timer) in
-            self.elonImageView.image = UIImage(named: "mouth3")
-        }
-        Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false) { (timer) in
-            self.elonImageView.image = UIImage(named: "mouth2")
-        }
-        Timer.scheduledTimer(withTimeInterval: 0.65, repeats: false) { (timer) in
-            self.elonImageView.image = UIImage(named: "mouth1")
-        }
-        Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false) { (timer) in
-            self.elonImageView.image = UIImage(named: "1")
-        }
+        self.playOpenMouthAnimation()
         
         if currentStatus == .Talking {
             currentStatus = .Waiting
             audioPlayer.stop()
         }
+        
+        if arc4random() % 10 < 1 {
+            self.bubbleTexts = [getRandomItemFromArray(array: ["Ouch.. don't tap on my face too hard", "Ahh", "Ooo"])]
+            self.displayBubbleTextsSequentially()
+        }
        
     }
+    
+    @IBAction func settingsButtonTapped(_ sender: Any) {
+        let settingsVC = SettingsViewController(nibName: nil, bundle: nil)
+        let navController = UINavigationController(rootViewController: settingsVC)
+        self.present(navController, animated: true, completion: nil)
+    }
+    
+    @IBAction func questionButtonTapped(_ sender: Any) {
+        let questionVC = QuestionViewController(nibName: nil, bundle: nil)
+        let navController = UINavigationController(rootViewController: questionVC)
+        self.present(navController, animated: true, completion: nil)
+    }
+    
     
     // MARK - AudioDelegate
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
@@ -459,22 +521,29 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         
         let newImage = UIImage(named: "\(self.currentImageIndex).png")
         self.elonImageView.image = newImage
+        
+        // Complain about spinning
+        if self.currentImageIndex == 30 && arc4random() % 10 < 2 {
+            self.bubbleTexts = [self.getRandomItemFromArray(array: ["Stop spinning my head", "Don't spin my head anymore"]) , self.getRandomItemFromArray(array: ["It's making me dizzy", "I'm getting dizzy", "I'm not feeling too well after spinning", "I'm not feeling too well"])]
+            self.displayBubbleTextsSequentially()
+        }
     }
     
     
     // MARK: - SKTransactionDelegate
     
     func transactionDidBeginRecording(_ transaction: SKTransaction!) {
-
+        currentStatus = .Listening
         startMicrophoneAnimations()
     }
     
     func transactionDidFinishRecording(_ transaction: SKTransaction!) {
-
+        currentStatus = .Waiting
         stopMicrophoneAnimations()
     }
     
     func transaction(_ transaction: SKTransaction!, didReceive recognition: SKRecognition!) {
+        currentStatus = .Waiting
         if let recognizedText = recognition.text {
             print("Did Receive Recognition: \(recognition.text)")
             OperationQueue.main.addOperation {
@@ -494,28 +563,25 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     }
     
     func transaction(_ transaction: SKTransaction!, didFinishWithSuggestion suggestion: String) {
+        currentStatus = .Waiting
         print("did finish with suggestion \(suggestion)")
         self.skTransaction = nil
     }
     
     func transaction(_ transaction: SKTransaction!, didFailWithError error: Error!, suggestion: String) {
+        currentStatus = .Waiting
         print(String(format: "didFailWithError: %@. %@", arguments: [error.localizedDescription, suggestion]))
         self.skTransaction = nil
     }
     
+    
     // Helpers
-//        OperationQueue.main.addOperation({
-//        })
-    func getRandomStartingAudioId() -> String {
-        let index = Int(arc4random_uniform(UInt32(startingAudioIds.count)))
-        return startingAudioIds[index]
-    }
     
-    func getRandomConnectingAudioId() -> String {
-        let index = Int(arc4random_uniform(UInt32(connectingAudioIds.count)))
-        return connectingAudioIds[index]
+    func getRandomItemFromArray<T>(array: [T]) -> T {
+        let index = Int(arc4random_uniform(UInt32(array.count)))
+        return array[index]
     }
-    
+
     
 }
 

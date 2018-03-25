@@ -9,19 +9,26 @@
 import UIKit
 import CoreData
 import ApiAI
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let apiAI = ApiAI.shared()
+    let mixpanel = Mixpanel.sharedInstance(withToken: "f90c9dbd70fcc0da45cee7d9572cb5a5", launchOptions: [:], trackCrashes: true, automaticPushTracking: true)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // Initialize ApiAI
+        // Initializing Frameworks *******
+        // ApiAI
         let configuration = AIDefaultConfiguration()
         configuration.clientAccessToken = "63c1805aea5f4157bb90878a7a99e69c"
         self.apiAI?.configuration = configuration
+        
+        // mixpanel
+        mixpanel.track("app_launch")
+        
         
         return true
     }
