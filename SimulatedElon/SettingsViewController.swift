@@ -23,15 +23,20 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
+        self.title = "Settings"
+        //        UIColor(red: 210, green: 248, blue: 255, alpha: 1)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "blueBackground.jpg")!)
         
         let navItem = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(dismissButtonTapped))
-        self.navigationController?.navigationItem.leftBarButtonItem = navItem
+        self.navigationItem.leftBarButtonItem = navItem
         
         self.view.addSubview(mainScrollView)
+        mainScrollView.backgroundColor = UIColor.clear
         mainScrollView.autoPinEdgesToSuperviewEdges()
         
         let scrollContentView = UIView()
+
+        scrollContentView.backgroundColor = UIColor.clear
         mainScrollView.addSubview(scrollContentView)
         scrollContentView.autoPinEdgesToSuperviewEdges()
         scrollContentView.autoMatch(.width, to: .width, of: view)

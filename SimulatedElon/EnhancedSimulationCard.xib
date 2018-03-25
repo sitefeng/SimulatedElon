@@ -92,7 +92,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="263-Q2-c0R"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="14"/>
                     <color key="textColor" red="0.2895828104" green="0.61741936500000005" blue="0.69947652279999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
