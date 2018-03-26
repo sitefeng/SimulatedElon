@@ -57,10 +57,10 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     @IBOutlet weak var elonImageView: UIImageView!
     @IBOutlet weak var backgroundView: UIView!
     
-    @IBOutlet weak var bubbleImageView: UIImageView!
+    @IBOutlet weak var chatBubbleContainer: UIView!
+    var chatBubble: ChatBubbleView = ChatBubbleView.instanceFromNib()
     @IBOutlet weak var orangeDotImageView: UIImageView!
     
-    @IBOutlet weak var bubbleLabel: UILabel!
     @IBOutlet weak var dictationTextLabel: UILabel!
     
     
@@ -93,6 +93,9 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         elonImageView.addGestureRecognizer(panRec)
         
         // Setup Views
+        chatBubbleContainer.backgroundColor = UIColor.clear
+        chatBubbleContainer.addSubview(chatBubble)
+        chatBubble.autoPinEdgesToSuperviewEdges()
         
         self.bubbleTexts = ["Nice to meet you! I am Simulated Elon with a virtual conciousness.",
                             "Tap the microphone button to ask a question, tap on my head to stop the audio at any time.",
@@ -126,50 +129,9 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
                 bubbleDuration = 8
             }
             Timer.scheduledTimer(withTimeInterval: bubbleDelay, repeats: false, block: { (timer) in
-                self.showAnimatedBubble(text: bubbleText, duration: bubbleDuration)
+                self.chatBubble.showAnimatedBubble(text: bubbleText, duration: bubbleDuration)
             })
         }
-    }
-    
-    func showAnimatedBubble(text: String, duration: TimeInterval) {
-        self.bubbleTimer?.invalidate()
-        
-        bubbleLabel.alpha = 0
-        bubbleImageView.alpha = 0
-        bubbleLabel.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-        bubbleImageView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-        
-        OperationQueue.main.addOperation {
-            self.bubbleLabel.text = text
-            UIView.animate(withDuration: 0.5, animations: {
-                self.bubbleLabel.alpha = 1.0
-                self.bubbleImageView.alpha = 1.0
-                self.bubbleLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
-                self.bubbleImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
-        
-        self.bubbleTimer = Timer.scheduledTimer(withTimeInterval: duration-0.5, repeats: false) { (timer) in
-            OperationQueue.main.addOperation {
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.bubbleLabel.alpha = 0
-                    self.bubbleImageView.alpha = 0
-                    self.bubbleLabel.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-                    self.bubbleImageView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-                })
-            }
-        }
-    }
-    
-    func hideAnimatedBubble() {
-        self.bubbleTimer?.invalidate()
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.bubbleLabel.alpha = 0
-            self.bubbleImageView.alpha = 0
-            self.bubbleLabel.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-            self.bubbleImageView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-        })
     }
     
     func recognize() {

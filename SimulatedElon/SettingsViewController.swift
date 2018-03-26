@@ -44,26 +44,32 @@ class SettingsViewController: UIViewController {
         
         let enhancedSimulation = EnhancedSimulationCard.instanceFromNib()
         scrollContentView.addSubview(enhancedSimulation)
+        enhancedSimulation.layer.borderColor = UIColor(red: 30, green: 30, blue: 30, alpha: 1).cgColor
+        enhancedSimulation.layer.borderWidth = 4
         enhancedSimulation.layer.cornerRadius = 30
         enhancedSimulation.layer.masksToBounds = true
         enhancedSimulation.autoPinEdge(toSuperviewEdge: .top, withInset: 16)
         enhancedSimulation.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
         enhancedSimulation.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
-        enhancedSimulation.autoSetDimension(.height, toSize: 323)
+        enhancedSimulation.autoSetDimension(.height, toSize: 343)
         
         let lifetime = LifetimeVIPCard.instanceFromNib()
         scrollContentView.addSubview(lifetime)
         lifetime.layer.cornerRadius = 30
         lifetime.layer.masksToBounds = true
+        lifetime.layer.borderColor = UIColor(red: 30, green: 30, blue: 30, alpha: 1).cgColor
+        lifetime.layer.borderWidth = 4
         lifetime.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
         lifetime.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
         lifetime.autoPinEdge(.top, to: .bottom, of: enhancedSimulation, withOffset: 16)
-        lifetime.autoSetDimension(.height, toSize: 278)
+        lifetime.autoSetDimension(.height, toSize: 298)
         
         let contactSupport = ContactSupportCard.instanceFromNib()
         scrollContentView.addSubview(contactSupport)
         contactSupport.layer.cornerRadius = 30
         contactSupport.layer.masksToBounds = true
+        contactSupport.layer.borderColor = UIColor(red: 30, green: 30, blue: 30, alpha: 1).cgColor
+        contactSupport.layer.borderWidth = 4
         contactSupport.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
         contactSupport.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
         contactSupport.autoPinEdge(.top, to: .bottom, of: lifetime, withOffset: 16)

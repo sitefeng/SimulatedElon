@@ -12,7 +12,6 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="Futura.ttc">
-            <string>Futura-Medium</string>
             <string>Futura-MediumItalic</string>
         </array>
     </customFonts>
@@ -67,7 +66,7 @@
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try tapping the microphone..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1T-T7-xdY">
                                                 <rect key="frame" x="8" y="2" width="359" height="49"/>
-                                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="16"/>
                                                 <color key="textColor" red="0.28408841458489281" green="0.35502738831482228" blue="0.38119332901554404" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -100,21 +99,6 @@
                                             <constraint firstItem="o1T-T7-xdY" firstAttribute="top" secondItem="mkg-sU-vwl" secondAttribute="top" constant="2" id="tlZ-uI-N1B"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble2.png" translatesAutoresizingMaskIntoConstraints="NO" id="uQ2-Ji-0SQ">
-                                        <rect key="frame" x="30" y="45" width="315" height="172"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="172" id="BSH-lD-YIp"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjK-45-uaH">
-                                        <rect key="frame" x="46" y="56" width="282" height="121"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="121" id="Fer-YN-sWT"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nk-dL-Gqr" userLabel="thinView">
                                         <rect key="frame" x="0.0" y="492" width="375" height="6"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29808538732394368" colorSpace="custom" customColorSpace="displayP3"/>
@@ -129,15 +113,9 @@
                                     <constraint firstItem="LAC-3C-XdP" firstAttribute="top" secondItem="Wd5-qT-QlJ" secondAttribute="top" id="1QY-fq-4Ug"/>
                                     <constraint firstItem="5nk-dL-Gqr" firstAttribute="trailing" secondItem="mkg-sU-vwl" secondAttribute="trailing" id="3vk-cg-lFG"/>
                                     <constraint firstAttribute="bottom" secondItem="LAC-3C-XdP" secondAttribute="bottom" id="8ci-Sk-D31"/>
-                                    <constraint firstItem="RjK-45-uaH" firstAttribute="top" secondItem="Wd5-qT-QlJ" secondAttribute="top" constant="56" id="8qE-Aq-6WF"/>
-                                    <constraint firstItem="RjK-45-uaH" firstAttribute="centerX" secondItem="5nk-dL-Gqr" secondAttribute="centerX" id="T9p-Ql-EEr"/>
                                     <constraint firstItem="5nk-dL-Gqr" firstAttribute="leading" secondItem="mkg-sU-vwl" secondAttribute="leading" id="bhP-jO-PMy"/>
                                     <constraint firstAttribute="trailing" secondItem="LAC-3C-XdP" secondAttribute="trailing" id="eLu-7n-Jyd"/>
-                                    <constraint firstItem="RjK-45-uaH" firstAttribute="leading" secondItem="Wd5-qT-QlJ" secondAttribute="leading" constant="46" id="kFk-w8-6ck"/>
-                                    <constraint firstItem="uQ2-Ji-0SQ" firstAttribute="leading" secondItem="Wd5-qT-QlJ" secondAttribute="leading" constant="30" id="ma7-Ae-MB3"/>
-                                    <constraint firstItem="uQ2-Ji-0SQ" firstAttribute="top" secondItem="Wd5-qT-QlJ" secondAttribute="top" constant="45" id="n7X-d0-SDH"/>
                                     <constraint firstItem="LAC-3C-XdP" firstAttribute="trailing" secondItem="5nk-dL-Gqr" secondAttribute="trailing" id="nug-IZ-qpK"/>
-                                    <constraint firstItem="uQ2-Ji-0SQ" firstAttribute="centerX" secondItem="RjK-45-uaH" secondAttribute="centerX" id="pyI-rM-3UL"/>
                                     <constraint firstItem="LAC-3C-XdP" firstAttribute="leading" secondItem="Wd5-qT-QlJ" secondAttribute="leading" id="twi-RW-L6m"/>
                                     <constraint firstItem="LAC-3C-XdP" firstAttribute="leading" secondItem="5nk-dL-Gqr" secondAttribute="leading" id="xki-5V-FmX"/>
                                     <constraint firstAttribute="bottom" secondItem="mkg-sU-vwl" secondAttribute="bottom" constant="-1" id="yhd-7b-NYT"/>
@@ -146,6 +124,10 @@
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.png" translatesAutoresizingMaskIntoConstraints="NO" id="wuv-YM-GP8">
                                 <rect key="frame" x="50" y="205" width="274" height="258"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kl8-uY-zhD">
+                                <rect key="frame" x="16" y="36" width="343" height="209"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -154,16 +136,19 @@
                             <constraint firstItem="Wd5-qT-QlJ" firstAttribute="centerX" secondItem="wuv-YM-GP8" secondAttribute="centerX" id="Eb3-aU-Iri"/>
                             <constraint firstItem="wuv-YM-GP8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="185" id="GBM-X9-bon"/>
                             <constraint firstItem="Wd5-qT-QlJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Isy-Vs-F47"/>
+                            <constraint firstItem="Kl8-uY-zhD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="MnI-fk-pGn"/>
+                            <constraint firstItem="Kl8-uY-zhD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="P7v-Kt-SJh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kl8-uY-zhD" secondAttribute="trailing" constant="16" id="T46-Bd-8BP"/>
                             <constraint firstItem="Wd5-qT-QlJ" firstAttribute="centerY" secondItem="wuv-YM-GP8" secondAttribute="centerY" id="Tzn-gI-CT2"/>
                             <constraint firstItem="Wd5-qT-QlJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UP3-JE-hzb"/>
-                            <constraint firstItem="Wd5-qT-QlJ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="uGd-gY-pb0"/>
+                            <constraint firstItem="Wd5-qT-QlJ" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="uGd-gY-pb0"/>
+                            <constraint firstItem="wuv-YM-GP8" firstAttribute="top" secondItem="Kl8-uY-zhD" secondAttribute="bottom" constant="-40" id="wkP-hf-sa2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="Wd5-qT-QlJ" id="yQB-Bj-s77"/>
-                        <outlet property="bubbleImageView" destination="uQ2-Ji-0SQ" id="GJM-nC-fVX"/>
-                        <outlet property="bubbleLabel" destination="RjK-45-uaH" id="zfg-f8-CYA"/>
+                        <outlet property="chatBubbleContainer" destination="Kl8-uY-zhD" id="ZMa-MM-dki"/>
                         <outlet property="dictationTextLabel" destination="o1T-T7-xdY" id="yGf-3y-avI"/>
                         <outlet property="elonImageView" destination="wuv-YM-GP8" id="yHT-ye-kkw"/>
                         <outlet property="orangeDotImageView" destination="Nuo-GT-3Ka" id="j9N-x5-VPI"/>
@@ -177,7 +162,6 @@
     </scenes>
     <resources>
         <image name="1.png" width="700" height="740"/>
-        <image name="bubble2.png" width="1233" height="867"/>
         <image name="cubeBackground.jpg" width="2917" height="3000"/>
         <image name="microphone.png" width="512" height="512"/>
         <image name="question.png" width="96" height="96"/>

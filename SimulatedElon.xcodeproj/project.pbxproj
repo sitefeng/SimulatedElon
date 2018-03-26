@@ -40,7 +40,6 @@
 		7662CF872063863200BB4195 /* bubble1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF862063863200BB4195 /* bubble1.png */; };
 		7662CF8B2063894B00BB4195 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8A2063894A00BB4195 /* microphone.png */; };
 		7662CF8D20638AC100BB4195 /* bubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8C20638AC000BB4195 /* bubble2.png */; };
-		7662CF8F20638D4B00BB4195 /* microphoneActivated.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8E20638D4B00BB4195 /* microphoneActivated.png */; };
 		7662CF9120638D6000BB4195 /* soundOrangeDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF9020638D5F00BB4195 /* soundOrangeDot.png */; };
 		7662CF93206390A700BB4195 /* SEUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7662CF92206390A700BB4195 /* SEUtility.swift */; };
 		76E288772060DB3400D4256F /* 513.wav in Resources */ = {isa = PBXBuildFile; fileRef = 76E287A62060DB3400D4256F /* 513.wav */; };
@@ -331,6 +330,7 @@
 		76E28A7420636F4C00D4256F /* mouth5.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A7120636F4C00D4256F /* mouth5.png */; };
 		76E28A762063707D00D4256F /* mouth0.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E28A752063707D00D4256F /* mouth0.png */; };
 		76F60D84205E23E7006449B0 /* ApiAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F60D85205E23E7006449B0 /* ApiAI.framework */; };
+		76FCA5122068B8F50008C784 /* microphoneActivated.png in Resources */ = {isa = PBXBuildFile; fileRef = 76FCA5112068B8F50008C784 /* microphoneActivated.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -390,7 +390,6 @@
 		7662CF862063863200BB4195 /* bubble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble1.png; sourceTree = "<group>"; };
 		7662CF8A2063894A00BB4195 /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
 		7662CF8C20638AC000BB4195 /* bubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble2.png; sourceTree = "<group>"; };
-		7662CF8E20638D4B00BB4195 /* microphoneActivated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphoneActivated.png; sourceTree = "<group>"; };
 		7662CF9020638D5F00BB4195 /* soundOrangeDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundOrangeDot.png; sourceTree = "<group>"; };
 		7662CF92206390A700BB4195 /* SEUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEUtility.swift; sourceTree = "<group>"; };
 		76E287A62060DB3400D4256F /* 513.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 513.wav; sourceTree = "<group>"; };
@@ -681,6 +680,7 @@
 		76E28A7120636F4C00D4256F /* mouth5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth5.png; sourceTree = "<group>"; };
 		76E28A752063707D00D4256F /* mouth0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth0.png; sourceTree = "<group>"; };
 		76F60D85205E23E7006449B0 /* ApiAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ApiAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76FCA5112068B8F50008C784 /* microphoneActivated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphoneActivated.png; sourceTree = "<group>"; };
 		8BE16FD81A00D07E02B6F2FE /* Pods-SimulatedElon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimulatedElon.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimulatedElon/Pods-SimulatedElon.release.xcconfig"; sourceTree = "<group>"; };
 		BB7E7B0AF58DBFCC6FDF627C /* Pods-SimulatedElon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimulatedElon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimulatedElon/Pods-SimulatedElon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1107,6 +1107,7 @@
 		76E289CD2062233300D4256F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				76FCA5112068B8F50008C784 /* microphoneActivated.png */,
 				763F920B206726AB00902513 /* question.png */,
 				763F92092067260400902513 /* info.png */,
 				763F92012067179A00902513 /* doubleRight.png */,
@@ -1116,7 +1117,6 @@
 				763F91652064D26B00902513 /* rocket2.png */,
 				763F915F2064C61400902513 /* settingsIcon.png */,
 				7662CF9020638D5F00BB4195 /* soundOrangeDot.png */,
-				7662CF8E20638D4B00BB4195 /* microphoneActivated.png */,
 				7662CF8C20638AC000BB4195 /* bubble2.png */,
 				7662CF8A2063894A00BB4195 /* microphone.png */,
 				7662CF862063863200BB4195 /* bubble1.png */,
@@ -1285,7 +1285,6 @@
 				76E288A62060DB3400D4256F /* 559.wav in Resources */,
 				76E289872060DB4100D4256F /* 49.png in Resources */,
 				76E28A7220636F4C00D4256F /* mouth6.png in Resources */,
-				7662CF8F20638D4B00BB4195 /* microphoneActivated.png in Resources */,
 				76E289CC2062232E00D4256F /* cubeBackground.jpg in Resources */,
 				76E2892D2060DB3400D4256F /* 518.wav in Resources */,
 				763F91662064D26B00902513 /* rocket2.png in Resources */,
@@ -1324,6 +1323,7 @@
 				76E28A6C20636F2100D4256F /* mouth3.png in Resources */,
 				76E2889F2060DB3400D4256F /* 564.wav in Resources */,
 				76E288B72060DB3400D4256F /* 589.wav in Resources */,
+				76FCA5122068B8F50008C784 /* microphoneActivated.png in Resources */,
 				76E2889D2060DB3400D4256F /* 570.wav in Resources */,
 				76E288D52060DB3400D4256F /* 5103.wav in Resources */,
 				7662CF8B2063894B00BB4195 /* microphone.png in Resources */,

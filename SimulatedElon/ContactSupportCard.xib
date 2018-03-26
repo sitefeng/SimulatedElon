@@ -10,10 +10,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Courier.ttc">
-            <string>Courier</string>
-        </array>
         <array key="Futura.ttc">
+            <string>Futura-Bold</string>
             <string>Futura-Medium</string>
         </array>
     </customFonts>
@@ -29,7 +27,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="26" id="Tut-IG-8i7"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -38,7 +36,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="02s-yh-wOq"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="12"/>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -48,7 +46,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="8dS-PE-Z6r"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
                     <state key="normal" title="Contact Support">
                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
