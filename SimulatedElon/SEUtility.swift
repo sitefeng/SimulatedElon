@@ -20,4 +20,6 @@ class SEUtility: NSObject {
         }
         return isiPhoneX
     }
+    
 }
+

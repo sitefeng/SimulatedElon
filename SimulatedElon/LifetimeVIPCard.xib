@@ -36,7 +36,7 @@
                         <constraint firstAttribute="height" constant="30" id="uNh-ok-amj"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.1320607218" green="0.28418717269999999" blue="0.3239213198" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✅ All the perks of Enhanced Simulation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZJ-L5-11f">
@@ -45,7 +45,7 @@
                         <constraint firstAttribute="height" constant="25" id="Owc-NP-B6J"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="13"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.1320607218" green="0.28418717269999999" blue="0.3239213198" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✅ Upload and use your own custom avatar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZx-p9-U8G">
@@ -54,7 +54,7 @@
                         <constraint firstAttribute="height" constant="25" id="h9h-p3-b0Y"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="13"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.1320607218" green="0.28418717269999999" blue="0.3239213198" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✅ Prioritized feature requests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV7-lE-vNe">
@@ -63,7 +63,7 @@
                         <constraint firstAttribute="height" constant="25" id="U9i-7G-ERu"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="13"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.1320607218" green="0.28418717269999999" blue="0.3239213198" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0A-aq-A6a">
@@ -76,14 +76,17 @@
                     <state key="normal" title="Get Lifetime Access">
                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="purchaseButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="h1z-1S-J8a"/>
+                    </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One time payment of $99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jda-hm-Ur0">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One time payment of $59.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jda-hm-Ur0">
                     <rect key="frame" x="16" y="253" width="292" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="2zz-Sm-x6A"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="12"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.1320607218" green="0.28418717269999999" blue="0.3239213198" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doubleRight.png" translatesAutoresizingMaskIntoConstraints="NO" id="jyW-3L-Ysb">

@@ -8,10 +8,12 @@
 
 import UIKit
 import PureLayout
+import StoreKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
     
     let mainScrollView = UIScrollView()
+    let purchasesManager = InAppPurchasesManager.shared()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -24,12 +26,18 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Settings"
-        //        UIColor(red: 210, green: 248, blue: 255, alpha: 1)
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "blueBackground.jpg")!)
         
         let navItem = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(dismissButtonTapped))
+        navItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.colorFromHex("4A9DB2")], for: .normal)
         self.navigationItem.leftBarButtonItem = navItem
         
+        // Logic
+        purchasesManager.delegate = self
+        purchasesManager.getProducts()
+        
+        
+        // SetupViews
         self.view.addSubview(mainScrollView)
         mainScrollView.backgroundColor = UIColor.clear
         mainScrollView.autoPinEdgesToSuperviewEdges()
@@ -66,6 +74,7 @@ class SettingsViewController: UIViewController {
         
         let contactSupport = ContactSupportCard.instanceFromNib()
         scrollContentView.addSubview(contactSupport)
+        contactSupport.presentingVC = self
         contactSupport.layer.cornerRadius = 30
         contactSupport.layer.masksToBounds = true
         contactSupport.layer.borderColor = UIColor(red: 30, green: 30, blue: 30, alpha: 1).cgColor
@@ -74,11 +83,23 @@ class SettingsViewController: UIViewController {
         contactSupport.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
         contactSupport.autoPinEdge(.top, to: .bottom, of: lifetime, withOffset: 16)
         contactSupport.autoSetDimension(.height, toSize: 160)
-        
-        
+    
     }
     
     @objc func dismissButtonTapped() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // MARK: inAppPurchasesManagerDelegate
+    func inAppPurchasesManager(manager: InAppPurchasesManager, didEnablePlanOfType type: PremiumPlanType) {
+        
+    }
+    
+    func inAppPurchasesManagerTransactionDidFail(manager: InAppPurchasesManager) {
+        let alertController = UIAlertController(title: "Purchases Unsuccessful", message: "Upgrade was not enabled", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(okayAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

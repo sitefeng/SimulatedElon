@@ -10,8 +10,14 @@ import UIKit
 
 class EnhancedSimulationCard: UIView {
 
-    class func instanceFromNib() -> UIView {
-        return UINib(nibName: "EnhancedSimulationCard", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    class func instanceFromNib() -> EnhancedSimulationCard {
+        return UINib(nibName: "EnhancedSimulationCard", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! EnhancedSimulationCard
     }
-
+    
+    @IBAction func purchaseButtonTapped(_ sender: Any) {
+        InAppPurchasesManager.shared().purchaseYearly()
+    }
+    
 }

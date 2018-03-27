@@ -7,11 +7,39 @@
 //
 
 import UIKit
+import MessageUI
 
-class ContactSupportCard: UIView {
+class ContactSupportCard: UIView, MFMailComposeViewControllerDelegate {
+    
+    weak var presentingVC: UIViewController?
 
-    class func instanceFromNib() -> UIView {
-        return UINib(nibName: "ContactSupportCard", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+    class func instanceFromNib() -> ContactSupportCard {
+        return UINib(nibName: "ContactSupportCard", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! ContactSupportCard
     }
 
+    @IBAction func contactSupportButtonTapped(_ sender: Any) {
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        
+        // Configure the fields of the interface.
+        composeVC.setToRecipients(["technochimera@gmail.com"])
+        composeVC.setSubject("I need help!")
+        composeVC.setMessageBody("", isHTML: false)
+        
+        // Present the view controller modally.
+        self.presentingVC?.present(composeVC, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        var title = "Message Sent!"
+        var message = "We will get back to you as soon as possible"
+        if let error = error {
+            title = "Error Sending Email"
+            message = "\(error.localizedDescription)"
+        }
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(okayAction)
+        self.presentingVC?.present(alertController, animated: true, completion: nil)
+    }
 }

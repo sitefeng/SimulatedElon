@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6B412EEA564A073056D04BAD /* Pods_SimulatedElon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA2F929180FA0A6830327FF /* Pods_SimulatedElon.framework */; };
+		762702CD2068DB70005B8CCB /* UIColor+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762702CC2068DB70005B8CCB /* UIColor+Utility.swift */; };
+		762702CF2068E5CD005B8CCB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762702CE2068E5CD005B8CCB /* StoreKit.framework */; };
 		76328F2D205DC9AD003C23C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76328F2C205DC9AD003C23C5 /* AppDelegate.swift */; };
 		76328F2F205DC9AD003C23C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76328F2E205DC9AD003C23C5 /* ViewController.swift */; };
 		76328F32205DC9AD003C23C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76328F30205DC9AD003C23C5 /* Main.storyboard */; };
@@ -37,6 +39,10 @@
 		763F921020672B4700902513 /* ChatBubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763F920F20672B4700902513 /* ChatBubbleView.xib */; };
 		763F921220674D3D00902513 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763F921120674D3D00902513 /* QuestionViewController.swift */; };
 		763F9217206761A100902513 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 763F9216206761A100902513 /* GoogleService-Info.plist */; };
+		764B17432069FDB3007426EB /* InAppPurchasesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B17422069FDB3007426EB /* InAppPurchasesManager.swift */; };
+		764B1746206A2009007426EB /* PremiumOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B1744206A2009007426EB /* PremiumOnboardingViewController.swift */; };
+		764B1747206A2009007426EB /* PremiumOnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 764B1745206A2009007426EB /* PremiumOnboardingViewController.xib */; };
+		764B1749206A208F007426EB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764B1748206A208F007426EB /* MessageUI.framework */; };
 		7662CF872063863200BB4195 /* bubble1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF862063863200BB4195 /* bubble1.png */; };
 		7662CF8B2063894B00BB4195 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8A2063894A00BB4195 /* microphone.png */; };
 		7662CF8D20638AC100BB4195 /* bubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8C20638AC000BB4195 /* bubble2.png */; };
@@ -352,6 +358,9 @@
 
 /* Begin PBXFileReference section */
 		0BA2F929180FA0A6830327FF /* Pods_SimulatedElon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimulatedElon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		762702CC2068DB70005B8CCB /* UIColor+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utility.swift"; sourceTree = "<group>"; };
+		762702CE2068E5CD005B8CCB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		762702D02068F0D3005B8CCB /* SimulatedElon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimulatedElon.entitlements; sourceTree = "<group>"; };
 		76328F29205DC9AD003C23C5 /* SimulatedElon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimulatedElon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76328F2C205DC9AD003C23C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76328F2E205DC9AD003C23C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -387,6 +396,10 @@
 		763F920F20672B4700902513 /* ChatBubbleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatBubbleView.xib; sourceTree = "<group>"; };
 		763F921120674D3D00902513 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		763F9216206761A100902513 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		764B17422069FDB3007426EB /* InAppPurchasesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchasesManager.swift; sourceTree = "<group>"; };
+		764B1744206A2009007426EB /* PremiumOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumOnboardingViewController.swift; sourceTree = "<group>"; };
+		764B1745206A2009007426EB /* PremiumOnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremiumOnboardingViewController.xib; sourceTree = "<group>"; };
+		764B1748206A208F007426EB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7662CF862063863200BB4195 /* bubble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble1.png; sourceTree = "<group>"; };
 		7662CF8A2063894A00BB4195 /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
 		7662CF8C20638AC000BB4195 /* bubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble2.png; sourceTree = "<group>"; };
@@ -690,6 +703,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764B1749206A208F007426EB /* MessageUI.framework in Frameworks */,
+				762702CF2068E5CD005B8CCB /* StoreKit.framework in Frameworks */,
 				763F91F520670E3600902513 /* PureLayout.framework in Frameworks */,
 				76E289C42060E02100D4256F /* AudioToolbox.framework in Frameworks */,
 				76E289C82060F26B00D4256F /* SpeechKit.framework in Frameworks */,
@@ -719,6 +734,8 @@
 		091DBBF31E958078A8C218BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				764B1748206A208F007426EB /* MessageUI.framework */,
+				762702CE2068E5CD005B8CCB /* StoreKit.framework */,
 				763F91F620670E3600902513 /* PureLayout.framework */,
 				76E289C72060F26B00D4256F /* SpeechKit.framework */,
 				76E289C32060E02100D4256F /* AudioToolbox.framework */,
@@ -763,11 +780,14 @@
 		76328F2B205DC9AD003C23C5 /* SimulatedElon */ = {
 			isa = PBXGroup;
 			children = (
+				762702D02068F0D3005B8CCB /* SimulatedElon.entitlements */,
 				76328F2C205DC9AD003C23C5 /* AppDelegate.swift */,
 				76328F2E205DC9AD003C23C5 /* ViewController.swift */,
 				76328F30205DC9AD003C23C5 /* Main.storyboard */,
 				763F920D20672AF500902513 /* ChatBubbleView.swift */,
 				763F920F20672B4700902513 /* ChatBubbleView.xib */,
+				764B1744206A2009007426EB /* PremiumOnboardingViewController.swift */,
+				764B1745206A2009007426EB /* PremiumOnboardingViewController.xib */,
 				763F91F32066466300902513 /* SettingsViewController.swift */,
 				763F921120674D3D00902513 /* QuestionViewController.swift */,
 				763F91FD2067164800902513 /* LifetimeVIPCard.swift */,
@@ -778,6 +798,8 @@
 				763F91F9206711A600902513 /* EnhancedSimulationCard.xib */,
 				76E289C52060F21E00D4256F /* SpeechKitConfiguration.swift */,
 				7662CF92206390A700BB4195 /* SEUtility.swift */,
+				762702CC2068DB70005B8CCB /* UIColor+Utility.swift */,
+				764B17422069FDB3007426EB /* InAppPurchasesManager.swift */,
 				76328F36205DC9AD003C23C5 /* Assets.xcassets */,
 				76E289CD2062233300D4256F /* images */,
 				76E289482060DB4100D4256F /* elonImages */,
@@ -1198,6 +1220,17 @@
 					76328F28205DC9AD003C23C5 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
 					};
 					76328F3F205DC9AD003C23C5 = {
 						CreatedOnToolsVersion = 9.2;
@@ -1281,6 +1314,7 @@
 				76E289152060DB3400D4256F /* 37.wav in Resources */,
 				76E288CE2060DB3400D4256F /* 579.wav in Resources */,
 				76E288A72060DB3400D4256F /* 598.wav in Resources */,
+				764B1747206A2009007426EB /* PremiumOnboardingViewController.xib in Resources */,
 				76E2898E2060DB4100D4256F /* 29.png in Resources */,
 				76E288A62060DB3400D4256F /* 559.wav in Resources */,
 				76E289872060DB4100D4256F /* 49.png in Resources */,
@@ -1634,6 +1668,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				763F91FE2067164800902513 /* LifetimeVIPCard.swift in Sources */,
+				764B17432069FDB3007426EB /* InAppPurchasesManager.swift in Sources */,
 				76328F2F205DC9AD003C23C5 /* ViewController.swift in Sources */,
 				76328F2D205DC9AD003C23C5 /* AppDelegate.swift in Sources */,
 				76E289C62060F21E00D4256F /* SpeechKitConfiguration.swift in Sources */,
@@ -1641,9 +1676,11 @@
 				76328F35205DC9AD003C23C5 /* SimulatedElon.xcdatamodeld in Sources */,
 				763F91F82067118D00902513 /* EnhancedSimulationCard.swift in Sources */,
 				7662CF93206390A700BB4195 /* SEUtility.swift in Sources */,
+				762702CD2068DB70005B8CCB /* UIColor+Utility.swift in Sources */,
 				763F920620671F2B00902513 /* ContactSupportCard.swift in Sources */,
 				763F91F42066466300902513 /* SettingsViewController.swift in Sources */,
 				763F921220674D3D00902513 /* QuestionViewController.swift in Sources */,
+				764B1746206A2009007426EB /* PremiumOnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1810,15 +1847,16 @@
 			baseConfigurationReference = BB7E7B0AF58DBFCC6FDF627C /* Pods-SimulatedElon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimulatedElon/SimulatedElon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J82WCWCC6R;
+				DEVELOPMENT_TEAM = 52GHE2Q332;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SimulatedElon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.auraHealth.SimulatedElon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SimulatedElon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1830,15 +1868,16 @@
 			baseConfigurationReference = 8BE16FD81A00D07E02B6F2FE /* Pods-SimulatedElon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimulatedElon/SimulatedElon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J82WCWCC6R;
+				DEVELOPMENT_TEAM = 52GHE2Q332;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SimulatedElon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.auraHealth.SimulatedElon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SimulatedElon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
