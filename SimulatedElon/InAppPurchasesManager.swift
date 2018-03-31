@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import Alamofire
 
 let UserDefaultsPremiumPlanTypeKey = "SEUserDefaultsPremiumPlanTypeKey"
 
@@ -119,7 +120,36 @@ class InAppPurchasesManager: NSObject, SKProductsRequestDelegate, SKPaymentTrans
         }
     }
     
-    
+    func verifySubscription(callback: @escaping (Bool, NSDictionary?)->Void) {
+        let receiptURL = Bundle.main.appStoreReceiptURL
+        let receiptOrNil = NSData(contentsOf: receiptURL!)
+        guard let receipt = receiptOrNil else {
+            print("Error: receipt is empty")
+            return
+        }
+        
+        let requestContents: [String: Any] = [
+            "receipt-data": receipt.base64EncodedString(options: []),
+            "password": "your iTunes Connect shared secret"
+        ]
+        
+        let appleServer = receiptURL?.lastPathComponent == "sandboxReceipt" ? "sandbox" : "buy"
+        
+        let stringURL = "https://\(appleServer).itunes.apple.com/verifyReceipt"
+        
+        print("Loading user receipt: \(stringURL)...")
+        
+        Alamofire.request(stringURL, method: .post, parameters: requestContents, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                if let value = response.result.value as? NSDictionary {
+                    print(value)
+                    callback(true, value)
+                } else {
+                    print("Receiving receipt from App Store failed: \(response.result)")
+                    callback(false, nil)
+                }
+        }
+    }
     
     
     

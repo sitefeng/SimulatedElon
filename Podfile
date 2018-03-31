@@ -13,4 +13,7 @@ target 'SimulatedElon' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Performance'
+  
+  pod 'Alamofire', '~> 4.7'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
 end

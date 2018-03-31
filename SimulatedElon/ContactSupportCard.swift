@@ -16,7 +16,12 @@ class ContactSupportCard: UIView, MFMailComposeViewControllerDelegate {
     class func instanceFromNib() -> ContactSupportCard {
         return UINib(nibName: "ContactSupportCard", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! ContactSupportCard
     }
-
+    
+    @IBAction func restoreButtonTapped(_ sender: Any) {
+        
+        
+    }
+    
     @IBAction func contactSupportButtonTapped(_ sender: Any) {
         let composeVC = MFMailComposeViewController()
         composeVC.mailComposeDelegate = self
@@ -31,15 +36,19 @@ class ContactSupportCard: UIView, MFMailComposeViewControllerDelegate {
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        var title = "Message Sent!"
-        var message = "We will get back to you as soon as possible"
-        if let error = error {
-            title = "Error Sending Email"
-            message = "\(error.localizedDescription)"
+        controller.dismiss(animated: true) {
+            if result != .sent {
+                return
+            }
+            
+            var title = "Message Sent!"
+            var message = "We will get back to you as soon as possible"
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alertController.addAction(okayAction)
+            self.presentingVC?.present(alertController, animated: true, completion: nil)
+            
         }
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
-        alertController.addAction(okayAction)
-        self.presentingVC?.present(alertController, animated: true, completion: nil)
+        
     }
 }

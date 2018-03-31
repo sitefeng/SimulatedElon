@@ -43,6 +43,7 @@
 		764B1746206A2009007426EB /* PremiumOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B1744206A2009007426EB /* PremiumOnboardingViewController.swift */; };
 		764B1747206A2009007426EB /* PremiumOnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 764B1745206A2009007426EB /* PremiumOnboardingViewController.xib */; };
 		764B1749206A208F007426EB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764B1748206A208F007426EB /* MessageUI.framework */; };
+		764B1914206F784A007426EB /* edgeBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 764B1913206F784A007426EB /* edgeBackground.jpg */; };
 		7662CF872063863200BB4195 /* bubble1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF862063863200BB4195 /* bubble1.png */; };
 		7662CF8B2063894B00BB4195 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8A2063894A00BB4195 /* microphone.png */; };
 		7662CF8D20638AC100BB4195 /* bubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8C20638AC000BB4195 /* bubble2.png */; };
@@ -400,6 +401,7 @@
 		764B1744206A2009007426EB /* PremiumOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumOnboardingViewController.swift; sourceTree = "<group>"; };
 		764B1745206A2009007426EB /* PremiumOnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremiumOnboardingViewController.xib; sourceTree = "<group>"; };
 		764B1748206A208F007426EB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		764B1913206F784A007426EB /* edgeBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = edgeBackground.jpg; sourceTree = "<group>"; };
 		7662CF862063863200BB4195 /* bubble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble1.png; sourceTree = "<group>"; };
 		7662CF8A2063894A00BB4195 /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
 		7662CF8C20638AC000BB4195 /* bubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble2.png; sourceTree = "<group>"; };
@@ -790,12 +792,12 @@
 				764B1745206A2009007426EB /* PremiumOnboardingViewController.xib */,
 				763F91F32066466300902513 /* SettingsViewController.swift */,
 				763F921120674D3D00902513 /* QuestionViewController.swift */,
+				763F91F72067118D00902513 /* EnhancedSimulationCard.swift */,
+				763F91F9206711A600902513 /* EnhancedSimulationCard.xib */,
 				763F91FD2067164800902513 /* LifetimeVIPCard.swift */,
 				763F91FF2067165B00902513 /* LifetimeVIPCard.xib */,
 				763F920520671F2B00902513 /* ContactSupportCard.swift */,
 				763F920720671F3900902513 /* ContactSupportCard.xib */,
-				763F91F72067118D00902513 /* EnhancedSimulationCard.swift */,
-				763F91F9206711A600902513 /* EnhancedSimulationCard.xib */,
 				76E289C52060F21E00D4256F /* SpeechKitConfiguration.swift */,
 				7662CF92206390A700BB4195 /* SEUtility.swift */,
 				762702CC2068DB70005B8CCB /* UIColor+Utility.swift */,
@@ -1129,6 +1131,7 @@
 		76E289CD2062233300D4256F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				764B1913206F784A007426EB /* edgeBackground.jpg */,
 				76FCA5112068B8F50008C784 /* microphoneActivated.png */,
 				763F920B206726AB00902513 /* question.png */,
 				763F92092067260400902513 /* info.png */,
@@ -1528,6 +1531,7 @@
 				76E288972060DB3400D4256F /* 310.wav in Resources */,
 				76E288E72060DB3400D4256F /* 553.wav in Resources */,
 				76E289882060DB4100D4256F /* 59.png in Resources */,
+				764B1914206F784A007426EB /* edgeBackground.jpg in Resources */,
 				76E288BF2060DB3400D4256F /* 563.wav in Resources */,
 				76E289932060DB4100D4256F /* 13.png in Resources */,
 				76E289942060DB4100D4256F /* 39.png in Resources */,
@@ -1620,23 +1624,27 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SimulatedElon/Pods-SimulatedElon-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ApiAI/ApiAI.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Mixpanel/Mixpanel.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ApiAI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
