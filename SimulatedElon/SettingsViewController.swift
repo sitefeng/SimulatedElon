@@ -137,6 +137,9 @@ class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
     // MARK: inAppPurchasesManagerDelegate
     func inAppPurchasesManager(manager: InAppPurchasesManager, didEnablePlanOfType type: PremiumPlanType) {
         print("did enable plan of type \(type.rawValue)")
+        
+        let premiumOnboardVC = PremiumOnboardingViewController(nibName: nil, bundle: nil)
+        self.navigationController?.pushViewController(premiumOnboardVC, animated: true)
     }
     
     func inAppPurchasesManagerTransactionDidFail(manager: InAppPurchasesManager) {

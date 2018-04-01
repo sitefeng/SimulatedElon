@@ -44,6 +44,9 @@
 		764B1747206A2009007426EB /* PremiumOnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 764B1745206A2009007426EB /* PremiumOnboardingViewController.xib */; };
 		764B1749206A208F007426EB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764B1748206A208F007426EB /* MessageUI.framework */; };
 		764B1914206F784A007426EB /* edgeBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 764B1913206F784A007426EB /* edgeBackground.jpg */; };
+		764B19672070D62B007426EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B19652070D62B007426EB /* LoginViewController.swift */; };
+		764B19682070D62B007426EB /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 764B19662070D62B007426EB /* LoginViewController.xib */; };
+		764B196A2070DDC0007426EB /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764B19692070DDC0007426EB /* Speech.framework */; };
 		7662CF872063863200BB4195 /* bubble1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF862063863200BB4195 /* bubble1.png */; };
 		7662CF8B2063894B00BB4195 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8A2063894A00BB4195 /* microphone.png */; };
 		7662CF8D20638AC100BB4195 /* bubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8C20638AC000BB4195 /* bubble2.png */; };
@@ -402,6 +405,9 @@
 		764B1745206A2009007426EB /* PremiumOnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremiumOnboardingViewController.xib; sourceTree = "<group>"; };
 		764B1748206A208F007426EB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		764B1913206F784A007426EB /* edgeBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = edgeBackground.jpg; sourceTree = "<group>"; };
+		764B19652070D62B007426EB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		764B19662070D62B007426EB /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		764B19692070DDC0007426EB /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		7662CF862063863200BB4195 /* bubble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble1.png; sourceTree = "<group>"; };
 		7662CF8A2063894A00BB4195 /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
 		7662CF8C20638AC000BB4195 /* bubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble2.png; sourceTree = "<group>"; };
@@ -705,6 +711,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764B196A2070DDC0007426EB /* Speech.framework in Frameworks */,
 				764B1749206A208F007426EB /* MessageUI.framework in Frameworks */,
 				762702CF2068E5CD005B8CCB /* StoreKit.framework in Frameworks */,
 				763F91F520670E3600902513 /* PureLayout.framework in Frameworks */,
@@ -736,6 +743,7 @@
 		091DBBF31E958078A8C218BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				764B19692070DDC0007426EB /* Speech.framework */,
 				764B1748206A208F007426EB /* MessageUI.framework */,
 				762702CE2068E5CD005B8CCB /* StoreKit.framework */,
 				763F91F620670E3600902513 /* PureLayout.framework */,
@@ -790,14 +798,11 @@
 				763F920F20672B4700902513 /* ChatBubbleView.xib */,
 				764B1744206A2009007426EB /* PremiumOnboardingViewController.swift */,
 				764B1745206A2009007426EB /* PremiumOnboardingViewController.xib */,
+				764B19652070D62B007426EB /* LoginViewController.swift */,
+				764B19662070D62B007426EB /* LoginViewController.xib */,
 				763F91F32066466300902513 /* SettingsViewController.swift */,
 				763F921120674D3D00902513 /* QuestionViewController.swift */,
-				763F91F72067118D00902513 /* EnhancedSimulationCard.swift */,
-				763F91F9206711A600902513 /* EnhancedSimulationCard.xib */,
-				763F91FD2067164800902513 /* LifetimeVIPCard.swift */,
-				763F91FF2067165B00902513 /* LifetimeVIPCard.xib */,
-				763F920520671F2B00902513 /* ContactSupportCard.swift */,
-				763F920720671F3900902513 /* ContactSupportCard.xib */,
+				764B19642070D5FA007426EB /* Views */,
 				76E289C52060F21E00D4256F /* SpeechKitConfiguration.swift */,
 				7662CF92206390A700BB4195 /* SEUtility.swift */,
 				762702CC2068DB70005B8CCB /* UIColor+Utility.swift */,
@@ -830,6 +835,19 @@
 				76328F51205DC9AD003C23C5 /* Info.plist */,
 			);
 			path = SimulatedElonUITests;
+			sourceTree = "<group>";
+		};
+		764B19642070D5FA007426EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				763F91F72067118D00902513 /* EnhancedSimulationCard.swift */,
+				763F91F9206711A600902513 /* EnhancedSimulationCard.xib */,
+				763F91FD2067164800902513 /* LifetimeVIPCard.swift */,
+				763F91FF2067165B00902513 /* LifetimeVIPCard.xib */,
+				763F920520671F2B00902513 /* ContactSupportCard.swift */,
+				763F920720671F3900902513 /* ContactSupportCard.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		76E287A52060DB3400D4256F /* elonAudio */ = {
@@ -1340,6 +1358,7 @@
 				76E288DA2060DB3400D4256F /* 550.wav in Resources */,
 				76E2899C2060DB4100D4256F /* 22.png in Resources */,
 				76E289B82060DB4100D4256F /* 50.png in Resources */,
+				764B19682070D62B007426EB /* LoginViewController.xib in Resources */,
 				76E2899B2060DB4100D4256F /* 34.png in Resources */,
 				76E289132060DB3400D4256F /* 724.wav in Resources */,
 				76E289A02060DB4100D4256F /* 27.png in Resources */,
@@ -1678,6 +1697,7 @@
 				763F91FE2067164800902513 /* LifetimeVIPCard.swift in Sources */,
 				764B17432069FDB3007426EB /* InAppPurchasesManager.swift in Sources */,
 				76328F2F205DC9AD003C23C5 /* ViewController.swift in Sources */,
+				764B19672070D62B007426EB /* LoginViewController.swift in Sources */,
 				76328F2D205DC9AD003C23C5 /* AppDelegate.swift in Sources */,
 				76E289C62060F21E00D4256F /* SpeechKitConfiguration.swift in Sources */,
 				763F920E20672AF500902513 /* ChatBubbleView.swift in Sources */,

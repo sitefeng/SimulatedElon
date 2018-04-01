@@ -25,7 +25,8 @@ class ContactSupportCard: UIView, MFMailComposeViewControllerDelegate {
     
     @IBAction func signInButtonTapped(_ sender: Any) {
         
-        
+        let loginVC = LoginViewController(nibName: nil, bundle: nil)
+        self.presentingVC?.navigationController?.pushViewController(loginVC, animated: true)
     }
     
     @IBAction func contactSupportButtonTapped(_ sender: Any) {

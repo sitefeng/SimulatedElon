@@ -48,7 +48,7 @@
                     <color key="textColor" red="0.1320607218" green="0.28418717269999999" blue="0.3239213198" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✅ Upload and use your own custom avatar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZx-p9-U8G">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✅ Free access to all future avatars" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZx-p9-U8G">
                     <rect key="frame" x="32" y="143" width="276" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="h9h-p3-b0Y"/>

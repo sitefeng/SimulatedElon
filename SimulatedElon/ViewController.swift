@@ -11,6 +11,7 @@ import ApiAI
 import AudioToolbox
 import AVFoundation
 import SpeechKit
+import Speech
 
 enum ElonStatus {
     case Waiting
@@ -404,7 +405,22 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
                 audioPlayer.stop()
             }
             
-            recognize()
+            if (SFSpeechRecognizer.authorizationStatus() == .notDetermined) {
+                SFSpeechRecognizer.requestAuthorization({ (status) in
+                    if status == .authorized {
+                        self.recognize()
+                    }
+                })
+            }
+            
+            if (SFSpeechRecognizer.authorizationStatus() == .authorized) {
+                recognize()
+            } else {
+                let alertController = UIAlertController(title: "Speech permission not enabled", message: "Please enable speech in Settings for this app. Please contact us if this issue persists", preferredStyle: .alert)
+                let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                alertController.addAction(okayAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
             
             // Fade out previous dictation text
             UIView.animate(withDuration: 0.5, animations: {
