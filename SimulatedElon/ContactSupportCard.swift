@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import Firebase
 
 class ContactSupportCard: UIView, MFMailComposeViewControllerDelegate {
     
@@ -22,14 +23,23 @@ class ContactSupportCard: UIView, MFMailComposeViewControllerDelegate {
         
     }
     
+    @IBAction func signInButtonTapped(_ sender: Any) {
+        
+        
+    }
+    
     @IBAction func contactSupportButtonTapped(_ sender: Any) {
         let composeVC = MFMailComposeViewController()
         composeVC.mailComposeDelegate = self
         
         // Configure the fields of the interface.
         composeVC.setToRecipients(["technochimera@gmail.com"])
-        composeVC.setSubject("I need help!")
-        composeVC.setMessageBody("", isHTML: false)
+        composeVC.setSubject("Simulated Elon Support")
+        if let userId = Auth.auth().currentUser?.uid {
+            composeVC.setMessageBody("Your UserID is [\(userId)] (Please keep, We use this ID in order to support you better)", isHTML: false)
+        } else {
+            composeVC.setMessageBody("", isHTML: false)
+        }
         
         // Present the view controller modally.
         self.presentingVC?.present(composeVC, animated: true, completion: nil)

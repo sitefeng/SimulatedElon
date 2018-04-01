@@ -125,7 +125,7 @@
                                 <rect key="frame" x="50" y="205" width="274" height="258"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kl8-uY-zhD">
-                                <rect key="frame" x="16" y="36" width="343" height="209"/>
+                                <rect key="frame" x="16" y="36" width="343" height="203"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -142,7 +142,7 @@
                             <constraint firstItem="Wd5-qT-QlJ" firstAttribute="centerY" secondItem="wuv-YM-GP8" secondAttribute="centerY" id="Tzn-gI-CT2"/>
                             <constraint firstItem="Wd5-qT-QlJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UP3-JE-hzb"/>
                             <constraint firstItem="Wd5-qT-QlJ" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="uGd-gY-pb0"/>
-                            <constraint firstItem="wuv-YM-GP8" firstAttribute="top" secondItem="Kl8-uY-zhD" secondAttribute="bottom" constant="-40" id="wkP-hf-sa2"/>
+                            <constraint firstItem="wuv-YM-GP8" firstAttribute="top" secondItem="Kl8-uY-zhD" secondAttribute="bottom" constant="-34" id="wkP-hf-sa2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

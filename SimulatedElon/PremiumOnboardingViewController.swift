@@ -17,6 +17,8 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
     private var passwordString: String = ""
     private var submitButtonTappedOnce = false
     
+    var fbAuthListenerHandle: AuthStateDidChangeListenerHandle!
+    
     let nameTextField = SkyFloatingLabelTextField()
     let emailTextField = SkyFloatingLabelTextField()
     let passwordTextField = SkyFloatingLabelTextField()
@@ -24,6 +26,18 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
     
     let signupButton = UIButton(type: UIButtonType.custom)
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fbAuthListenerHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            print("state did change: \(auth), \(user)")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(fbAuthListenerHandle)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Enhanced Simulation Setup"
@@ -47,8 +61,8 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
         let scrollViewContainer = UIView()
         scrollView.addSubview(scrollViewContainer)
         scrollViewContainer.backgroundColor = UIColor.clear
-        let tapRec = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped))
-        scrollViewContainer.addGestureRecognizer(tapRec)
+        let tapRec1 = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped))
+        scrollViewContainer.addGestureRecognizer(tapRec1)
         
         scrollViewContainer.autoPinEdgesToSuperviewEdges()
         scrollViewContainer.autoMatch(.width, to: .width, of: view)
@@ -76,7 +90,8 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
         
         let fieldsContainer = UIView()
         scrollViewContainer.addSubview(fieldsContainer)
-        fieldsContainer.addGestureRecognizer(tapRec)
+        let tapRec2 = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped))
+        fieldsContainer.addGestureRecognizer(tapRec2)
         fieldsContainer.backgroundColor = UIColor.white
         fieldsContainer.layer.cornerRadius = 30
         fieldsContainer.layer.masksToBounds = true
@@ -121,8 +136,8 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
         fieldsContainer.addSubview(phoneTextField)
         phoneTextField.addTarget(self, action: #selector(textFieldTextDidChange), for: .editingChanged)
         phoneTextField.keyboardType = .phonePad
-        phoneTextField.placeholder = "Phone number (for receiving SMS)"
-        phoneTextField.title = "Phone number (for receiving SMS)"
+        phoneTextField.placeholder = "Phone number"
+        phoneTextField.title = "Phone number"
         phoneTextField.titleLabel.font = UIFont(name: "Futura-Medium", size: 13)
         phoneTextField.errorColor = UIColor.orange
         phoneTextField.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
@@ -166,7 +181,7 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
             passwordTextField.errorMessage = ""
         }
         
-        if (!self.isValidEmail(testStr: email)) {
+        if (!SEUtility.isValidEmail(testStr: email)) {
             emailTextField.errorMessage = "Please enter a valid email"
             hasError = true
         } else {
@@ -177,21 +192,70 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        signupButton.titleLabel?.text = "Sending..."
+        signupButton.isEnabled = false
         registerUser(firstName: firstName, email: email, password: password, phoneNumber: phone)
         
-        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    private func isValidEmail(testStr:String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: testStr)
-    }
     
     private func registerUser(firstName: String, email: String, password: String, phoneNumber: String) {
         print("registering user: \(firstName), \(email), \(password), \(phoneNumber)")
-        
+    
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            guard let user = user else {
+                if let error = error {
+                    print("Error User Signup: \(error)")
+                }
+                self.signupButton.titleLabel?.text = "Done"
+                self.signupButton.isEnabled = true
+                
+                let alertController = UIAlertController(title: "Error Creating Account", message: "Please try again later, you can contact us if this issue persists", preferredStyle: .alert)
+                let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                alertController.addAction(okayAction)
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
+            
+            print("User signup successful")
+            let newUserItem: [String: Any?] = [
+                "email": email,
+                "firstName": firstName,
+                "phoneNumber": phoneNumber,
+                "accountCreationDate": ISO8601DateFormatter().string(from: Date()),
+                "lastVisited": ISO8601DateFormatter().string(from: Date()),
+                "timezone": TimeZone.autoupdatingCurrent.identifier,
+                "premium": true,
+                "smsEnabled": true
+            ]
+            Database.database().reference(withPath: "users/").child(user.uid).setValue(newUserItem)
+            
+            if phoneNumber != "" {
+                var properPhoneNumber = phoneNumber
+                if (phoneNumber.count == 10) {
+                    properPhoneNumber = "1" + phoneNumber
+                }
+                Database.database().reference(withPath: "phoneToUserId").child(properPhoneNumber).observeSingleEvent(of: .value, with: { (snap) in
+                    if snap.value == nil {
+                        Database.database().reference(withPath: "phoneToUserId/").child(properPhoneNumber).setValue(user.uid)
+                    } else {
+                        OperationQueue.main.addOperation {
+                            self.signupButton.titleLabel?.text = "Done"
+                            self.signupButton.isEnabled = true
+                            
+                            let alertController = UIAlertController(title: "Error Creating Account", message: "Phone number already taken", preferredStyle: .alert)
+                            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                            alertController.addAction(okayAction)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                    }
+                })
+                
+            }
+            
+            self.view.endEditing(true)
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func backgroundViewTapped() {
@@ -220,7 +284,7 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
             passwordTextField.errorMessage = ""
         }
         
-        if (!self.isValidEmail(testStr: email)) {
+        if (!SEUtility.isValidEmail(testStr: email)) {
             emailTextField.errorMessage = "Please enter a valid email"
         } else {
             emailTextField.errorMessage = ""

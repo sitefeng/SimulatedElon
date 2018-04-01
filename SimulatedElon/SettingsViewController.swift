@@ -114,7 +114,7 @@ class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
         contactSupport.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
         contactSupport.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
         contactSupport.autoPinEdge(.top, to: .bottom, of: accountLabel, withOffset: 16)
-        contactSupport.autoSetDimension(.height, toSize: 220)
+        contactSupport.autoSetDimension(.height, toSize: 251)
         
         
         // Setup Logic
