@@ -47,6 +47,8 @@
 		764B19672070D62B007426EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B19652070D62B007426EB /* LoginViewController.swift */; };
 		764B19682070D62B007426EB /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 764B19662070D62B007426EB /* LoginViewController.xib */; };
 		764B196A2070DDC0007426EB /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764B19692070DDC0007426EB /* Speech.framework */; };
+		764B196C20716360007426EB /* recordingStop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 764B196B20716360007426EB /* recordingStop.wav */; };
+		764B196F20716383007426EB /* recordingStart.wav in Resources */ = {isa = PBXBuildFile; fileRef = 764B196E20716383007426EB /* recordingStart.wav */; };
 		7662CF872063863200BB4195 /* bubble1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF862063863200BB4195 /* bubble1.png */; };
 		7662CF8B2063894B00BB4195 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8A2063894A00BB4195 /* microphone.png */; };
 		7662CF8D20638AC100BB4195 /* bubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8C20638AC000BB4195 /* bubble2.png */; };
@@ -323,7 +325,6 @@
 		76E289C02060DB4100D4256F /* 52.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E289842060DB4100D4256F /* 52.png */; };
 		76E289C22060E01B00D4256F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E289C12060E01B00D4256F /* AVFoundation.framework */; };
 		76E289C42060E02100D4256F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E289C32060E02100D4256F /* AudioToolbox.framework */; };
-		76E289C62060F21E00D4256F /* SpeechKitConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E289C52060F21E00D4256F /* SpeechKitConfiguration.swift */; };
 		76E289C82060F26B00D4256F /* SpeechKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E289C72060F26B00D4256F /* SpeechKit.framework */; };
 		76E289CA2061142900D4256F /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E289C92061142800D4256F /* 0.png */; };
 		76E289CC2062232E00D4256F /* cubeBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76E289CB2062232E00D4256F /* cubeBackground.jpg */; };
@@ -408,6 +409,8 @@
 		764B19652070D62B007426EB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		764B19662070D62B007426EB /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		764B19692070DDC0007426EB /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
+		764B196B20716360007426EB /* recordingStop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = recordingStop.wav; sourceTree = "<group>"; };
+		764B196E20716383007426EB /* recordingStart.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = recordingStart.wav; sourceTree = "<group>"; };
 		7662CF862063863200BB4195 /* bubble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble1.png; sourceTree = "<group>"; };
 		7662CF8A2063894A00BB4195 /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
 		7662CF8C20638AC000BB4195 /* bubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble2.png; sourceTree = "<group>"; };
@@ -684,7 +687,6 @@
 		76E289842060DB4100D4256F /* 52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 52.png; sourceTree = "<group>"; };
 		76E289C12060E01B00D4256F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		76E289C32060E02100D4256F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		76E289C52060F21E00D4256F /* SpeechKitConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechKitConfiguration.swift; sourceTree = "<group>"; };
 		76E289C72060F26B00D4256F /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpeechKit.framework; sourceTree = "<group>"; };
 		76E289C92061142800D4256F /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
 		76E289CB2062232E00D4256F /* cubeBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cubeBackground.jpg; sourceTree = "<group>"; };
@@ -803,11 +805,11 @@
 				763F91F32066466300902513 /* SettingsViewController.swift */,
 				763F921120674D3D00902513 /* QuestionViewController.swift */,
 				764B19642070D5FA007426EB /* Views */,
-				76E289C52060F21E00D4256F /* SpeechKitConfiguration.swift */,
 				7662CF92206390A700BB4195 /* SEUtility.swift */,
 				762702CC2068DB70005B8CCB /* UIColor+Utility.swift */,
 				764B17422069FDB3007426EB /* InAppPurchasesManager.swift */,
 				76328F36205DC9AD003C23C5 /* Assets.xcassets */,
+				764B196D20716364007426EB /* audio */,
 				76E289CD2062233300D4256F /* images */,
 				76E289482060DB4100D4256F /* elonImages */,
 				76E287A52060DB3400D4256F /* elonAudio */,
@@ -848,6 +850,15 @@
 				763F920720671F3900902513 /* ContactSupportCard.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		764B196D20716364007426EB /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				764B196B20716360007426EB /* recordingStop.wav */,
+				764B196E20716383007426EB /* recordingStart.wav */,
+			);
+			path = audio;
 			sourceTree = "<group>";
 		};
 		76E287A52060DB3400D4256F /* elonAudio */ = {
@@ -1426,6 +1437,7 @@
 				76E288E82060DB3400D4256F /* 547.wav in Resources */,
 				76E289112060DB3400D4256F /* 526.wav in Resources */,
 				76E289062060DB3400D4256F /* 5107.wav in Resources */,
+				764B196C20716360007426EB /* recordingStop.wav in Resources */,
 				76E289372060DB3400D4256F /* 723.wav in Resources */,
 				76E2898C2060DB4100D4256F /* 14.png in Resources */,
 				76E288D62060DB3400D4256F /* 55.wav in Resources */,
@@ -1582,6 +1594,7 @@
 				76E2890C2060DB3400D4256F /* 227.wav in Resources */,
 				763F91602064C61500902513 /* settingsIcon.png in Resources */,
 				76E289342060DB3400D4256F /* 333.wav in Resources */,
+				764B196F20716383007426EB /* recordingStart.wav in Resources */,
 				76E2898B2060DB4100D4256F /* 9.png in Resources */,
 				76E288DB2060DB3400D4256F /* 578.wav in Resources */,
 				76E289002060DB3400D4256F /* 554.wav in Resources */,
@@ -1699,7 +1712,6 @@
 				76328F2F205DC9AD003C23C5 /* ViewController.swift in Sources */,
 				764B19672070D62B007426EB /* LoginViewController.swift in Sources */,
 				76328F2D205DC9AD003C23C5 /* AppDelegate.swift in Sources */,
-				76E289C62060F21E00D4256F /* SpeechKitConfiguration.swift in Sources */,
 				763F920E20672AF500902513 /* ChatBubbleView.swift in Sources */,
 				76328F35205DC9AD003C23C5 /* SimulatedElon.xcdatamodeld in Sources */,
 				763F91F82067118D00902513 /* EnhancedSimulationCard.swift in Sources */,

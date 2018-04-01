@@ -19,13 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let apiAI = ApiAI.shared()
     var mixpanel = Mixpanel()
-    var speechKitSession = SKSession()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Initializing Frameworks *******
-        // SpeechKit
-        speechKitSession = SKSession(url: URL(string: SKSServerUrl), appToken: SKSAppKey)
         
         // Firebase
         FirebaseApp.configure()

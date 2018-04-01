@@ -46,13 +46,19 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     
     private var isElonRotating = false
     
+    var lowPassResults: Float = 0
+    
     var audioPlayer = AVAudioPlayer()
     var apiAi: ApiAI
-    var skSession:SKSession?
-    var skTransaction:SKTransaction?
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+    private let audioEngine = AVAudioEngine()
+    
     var mouthTimer: Timer?
     var microphoneTimer: Timer?
     var bubbleTimer: Timer?
+    var autoStopTimer: Timer?
     
     @IBOutlet weak var requestButton: UIButton!
     @IBOutlet weak var elonImageView: UIImageView!
@@ -78,14 +84,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        skSession = appDelegate.speechKitSession
         
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-        } catch {
-            print("Audio Session set category Failed")
-        }
+        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         
         // Gesture Recs
         let panRec = UIPanGestureRecognizer(target: self, action: #selector(backgroundViewSwipped(recognizer:)))
@@ -121,6 +121,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
 //        playAudioFileWithId(audioFileId: "")
     }
     
+    
     func displayBubbleTextsSequentially() {
         var bubbleDuration: TimeInterval = 5.0
         for i in 0..<self.bubbleTexts.count {
@@ -139,32 +140,80 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         if (currentStatus == .Listening) { return }
         currentStatus = .Listening
         
+        self.startMicrophoneAnimations()
+        
         // Start listening to the user.
-        let recognitionType = SKTransactionSpeechTypeDictation
-        let endpointer = SKTransactionEndOfSpeechDetection.short
-        let language = SKSLanguage
+        let audioSession = AVAudioSession.sharedInstance()
+        try! audioSession.setCategory(AVAudioSessionCategoryRecord)
+        try! audioSession.setMode(AVAudioSessionModeMeasurement)
+        try! audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         
-        let options = NSMutableDictionary()
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
-        // If progressive results
-        options.setValue(SKTransactionResultDeliveryProgressive, forKey: SKTransactionResultDeliveryKey);
+        let inputNode = audioEngine.inputNode
+        guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
         
-        skTransaction = skSession!.recognize(withType: recognitionType,
-                                             detection: endpointer,
-                                             language: language,
-                                             options: nil,
-                                             delegate: self)
+        // Configure request so that results are returned before audio recording is finished
+        recognitionRequest.shouldReportPartialResults = true
+        
+        // A recognition task represents a speech recognition session.
+        // We keep a reference to the task so that it can be cancelled.
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+            var isFinal = false
+            
+            if let result = result {
+                self.dictationTextLabel.text = result.bestTranscription.formattedString
+                isFinal = result.isFinal
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.dictationTextLabel.alpha = 1.0
+                });
+                
+                if self.autoStopTimer != nil {
+                    self.autoStopTimer?.invalidate()
+                    self.autoStopTimer = nil
+                }
+                self.autoStopTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.autoStopTimerCallback), userInfo: nil, repeats: false)
+                
+            }
+            
+            if error != nil || isFinal {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+                
+                self.currentStatus = .Waiting
+                self.stopMicrophoneAnimations()
+                
+                self.sendDialogflowRequest(requestString: self.dictationTextLabel.text ?? "")
+            }
+
+        }
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            self.recognitionRequest?.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        
+        try! audioEngine.start()
+        
     }
     
+    @objc func autoStopTimerCallback() {
+        autoStopTimer = nil
+        self.stopRecording()
+    }
+    
+    // Used to manually triggering stop, not stop handler
     func stopRecording() {
-        currentStatus = .Waiting
-        skTransaction!.stopRecording()
+        recognitionRequest?.endAudio()
+ 
+        // The rest are handled within the recognition request callback block
     }
     
-    func cancelRecording() {
-        currentStatus = .Waiting
-        skTransaction!.cancel()
-    }
     
     private func playAudioFileWithId(audioFileId: String) {
 
@@ -184,6 +233,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
                 print("audio player not initialized")
             }
             
+            try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             audioPlayer.volume = 1
             audioPlayer.delegate = self
             audioPlayer.play()
@@ -376,11 +426,12 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     }
     
     func startMicrophoneAnimations() {
+        
         self.requestButton.setImage(UIImage(named: "microphoneActivated.png"), for: .normal)
         self.microphoneTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (timer) in
             UIView.animate(withDuration: 0.04, animations: {
-                if self.skTransaction != nil {
-                    self.orangeDotImageView.alpha = CGFloat(self.skTransaction!.audioLevel / 100 - 0.1) * 1.111
+                if self.audioEngine.isRunning {
+                    self.orangeDotImageView.alpha = 0.7
                 } else {
                     self.orangeDotImageView.alpha = 0
                 }
@@ -389,6 +440,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
     }
     
     func stopMicrophoneAnimations() {
+        
         self.orangeDotImageView.alpha = 0
         self.requestButton.setImage(UIImage(named: "microphone.png"), for: .normal)
         self.microphoneTimer?.invalidate()
@@ -414,8 +466,10 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
             }
             
             if (SFSpeechRecognizer.authorizationStatus() == .authorized) {
+                print("Recognizinggg")
                 recognize()
-            } else {
+            } else if SFSpeechRecognizer.authorizationStatus() == .denied {
+                print("Getting permission")
                 let alertController = UIAlertController(title: "Speech permission not enabled", message: "Please enable speech in Settings for this app. Please contact us if this issue persists", preferredStyle: .alert)
                 let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
                 alertController.addAction(okayAction)
@@ -440,7 +494,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         }
         
         if arc4random() % 10 < 1 {
-            self.bubbleTexts = [getRandomItemFromArray(array: ["Ouch.. don't tap on my face too hard", "Ahh", "Ooo"])]
+            self.bubbleTexts = [getRandomItemFromArray(array: ["I don't like people touching my face", "Ahh", "Ooo"])]
             self.displayBubbleTextsSequentially()
         }
        
@@ -521,37 +575,10 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         stopMicrophoneAnimations()
     }
     
-    func transaction(_ transaction: SKTransaction!, didReceive recognition: SKRecognition!) {
-        currentStatus = .Waiting
-        if let recognizedText = recognition.text {
-            print("Did Receive Recognition: \(recognition.text)")
-            OperationQueue.main.addOperation {
-                // Fade in dictation text
-                self.dictationTextLabel.text = recognizedText
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.dictationTextLabel.alpha = 1.0
-                });
-            }
-            
-            sendDialogflowRequest(requestString: recognizedText)
-        }
-    }
     
-    func transaction(_ transaction: SKTransaction!, didReceiveServiceResponse response: [AnyHashable : Any]!) {
-        print(String(format: "didReceiveServiceResponse: %@", arguments: [response]))
-    }
     
-    func transaction(_ transaction: SKTransaction!, didFinishWithSuggestion suggestion: String) {
-        currentStatus = .Waiting
-        print("did finish with suggestion \(suggestion)")
-        self.skTransaction = nil
-    }
-    
-    func transaction(_ transaction: SKTransaction!, didFailWithError error: Error!, suggestion: String) {
-        currentStatus = .Waiting
-        print(String(format: "didFailWithError: %@. %@", arguments: [error.localizedDescription, suggestion]))
-        self.skTransaction = nil
-    }
+
+   
     
     
     // Helpers
