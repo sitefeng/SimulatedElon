@@ -19,7 +19,7 @@ enum ElonStatus {
     case Listening
 }
 
-class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDelegate, UIGestureRecognizerDelegate {
+class ViewController: UIViewController, AVAudioPlayerDelegate, UIGestureRecognizerDelegate {
     
     // Constants
     let startingAudioIds = ["569", "570", "593"]
@@ -562,27 +562,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, SKTransactionDele
         }
     }
     
-    
-    // MARK: - SKTransactionDelegate
-    
-    func transactionDidBeginRecording(_ transaction: SKTransaction!) {
-        currentStatus = .Listening
-        startMicrophoneAnimations()
-    }
-    
-    func transactionDidFinishRecording(_ transaction: SKTransaction!) {
-        currentStatus = .Waiting
-        stopMicrophoneAnimations()
-    }
-    
-    
-    
-
-   
-    
-    
     // Helpers
-    
     func getRandomItemFromArray<T>(array: [T]) -> T {
         let index = Int(arc4random_uniform(UInt32(array.count)))
         return array[index]
