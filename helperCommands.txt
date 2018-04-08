@@ -1,0 +1,25 @@
+-----------------------------
+Google Cloud Functions
+----------------------------
+gcloud auth login
+https://us-central1-selon-prod.cloudfunctions.net/sElon
+
+<<Don't forget to git push before deploy>>
+gcloud beta functions deploy sElon --stage-bucket selon-prod.appspot.com --trigger-http
+
+gcloud beta functions describe sElon
+
+gcloud beta functions logs read sElon
+----
+Emulator Google Cloud:
+functions start | stop | kill
+functions deploy sElon --trigger-http
+functions call sElon --data='{"result":{"metadata":{"intentName": "mars_duration"}}}'
+
+functions logs read
+
+----
+gcloud auth print-access-token
+
+=================
+ngrok http 1337

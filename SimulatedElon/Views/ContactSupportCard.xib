@@ -79,7 +79,6 @@
                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="restoreButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="3Yf-mw-O98"/>
                         <action selector="signInButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="zQg-FW-ytD"/>
                     </connections>
                 </button>
@@ -104,6 +103,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="restorePurchasesButton" destination="sTR-bS-dSs" id="cG2-WT-DXi"/>
+                <outlet property="signInButton" destination="AlS-UI-kqs" id="2uh-2Y-zva"/>
+            </connections>
             <point key="canvasLocation" x="30.5" y="-177.5"/>
         </view>
     </objects>

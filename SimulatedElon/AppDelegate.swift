@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let apiAI = ApiAI.shared()
     var mixpanel = Mixpanel()
     
+    var currentUser: [String: Any]?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Initializing Frameworks *******
@@ -36,6 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mixpanel = Mixpanel.sharedInstance(withToken: "f90c9dbd70fcc0da45cee7d9572cb5a5", launchOptions: [:], trackCrashes: true, automaticPushTracking: true)
         mixpanel.track("app_launch")
         
+        //purchaseManager
+        let purchasesManager = InAppPurchasesManager.shared()
+        purchasesManager.verifySubscription { (isPremium, isTrial, failReason) in
+            print("Subscription Status Fetched: isPremium[\(isPremium)], isTrial[\(isTrial)]")
+        }
         
         return true
     }

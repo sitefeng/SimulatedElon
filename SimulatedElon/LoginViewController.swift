@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
         welcomeDescriptionLabel.font = UIFont(name: "Futura-Medium", size: 14)
         welcomeDescriptionLabel.textColor = UIColor.white
         welcomeDescriptionLabel.textAlignment = .left
-        welcomeDescriptionLabel.text = "If you have signup before, you may sign in below"
+        welcomeDescriptionLabel.text = "If you have signed up before, you may sign in below"
         welcomeDescriptionLabel.numberOfLines = 3
         welcomeDescriptionLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
         welcomeDescriptionLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
@@ -85,7 +85,7 @@ class LoginViewController: UIViewController {
         fieldsContainer.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
         fieldsContainer.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
         fieldsContainer.autoPinEdge(.top, to: .bottom, of: welcomeDescriptionLabel, withOffset: 30)
-        fieldsContainer.autoSetDimension(.height, toSize: 340)
+        fieldsContainer.autoSetDimension(.height, toSize: 240)
         
         fieldsContainer.addSubview(emailTextField)
         emailTextField.addTarget(self, action: #selector(textFieldTextDidChange), for: .editingChanged)
@@ -117,7 +117,7 @@ class LoginViewController: UIViewController {
         signupButton.backgroundColor = UIColor.colorFromHex("#4A9DB2")
         signupButton.autoSetDimension(.width, toSize: 100)
         signupButton.autoSetDimension(.height, toSize: 44)
-        signupButton.autoPinEdge(.top, to: .bottom, of: phoneTextField, withOffset: 30)
+        signupButton.autoPinEdge(.top, to: .bottom, of: passwordTextField, withOffset: 30)
         signupButton.autoAlignAxis(toSuperviewAxis: .vertical)
         signupButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
@@ -169,7 +169,18 @@ class LoginViewController: UIViewController {
             }
             
             self.view.endEditing(true)
-            self.navigationController?.dismiss(animated: true, completion: nil)
+            
+            var successMessage = "Welcome back!"
+            if let userName = user?.displayName {
+                successMessage = "Welcome back, \(userName)!"
+            }
+            let alertController = UIAlertController(title: "Logged In", message: successMessage, preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: { (alertAction) in
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            })
+            alertController.addAction(okayAction)
+            self.present(alertController, animated: true, completion: nil)
+            
         }
         
     }

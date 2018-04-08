@@ -85,6 +85,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationQuestionAsked(notif:)), name: SimulatedElonDidAskQuestionNotification, object: nil)
+        
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         
         // Gesture Recs
@@ -466,10 +468,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             }
             
             if (SFSpeechRecognizer.authorizationStatus() == .authorized) {
-                print("Recognizinggg")
                 recognize()
             } else if SFSpeechRecognizer.authorizationStatus() == .denied {
-                print("Getting permission")
                 let alertController = UIAlertController(title: "Speech permission not enabled", message: "Please enable speech in Settings for this app. Please contact us if this issue persists", preferredStyle: .alert)
                 let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
                 alertController.addAction(okayAction)
@@ -510,6 +510,14 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         let questionVC = QuestionViewController(nibName: nil, bundle: nil)
         let navController = UINavigationController(rootViewController: questionVC)
         self.present(navController, animated: true, completion: nil)
+    }
+    
+    // NotificationCenter handlers
+    @objc func notificationQuestionAsked(notif: Notification) {
+        if let userInfo = notif.userInfo, let question = userInfo["question"] as? String {
+            self.dictationTextLabel.text = question
+            self.sendDialogflowRequest(requestString: self.dictationTextLabel.text ?? "")
+        }
     }
     
     

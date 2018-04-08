@@ -154,6 +154,27 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
         signupButton.autoPinEdge(.top, to: .bottom, of: phoneTextField, withOffset: 30)
         signupButton.autoAlignAxis(toSuperviewAxis: .vertical)
         signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+        
+        
+        let signInLabel = UILabel()
+        signInLabel.textColor = UIColor.white
+        signInLabel.textAlignment = .center
+        signInLabel.text = "Already signed up?"
+        scrollViewContainer.addSubview(signInLabel)
+        signInLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 32)
+        signInLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 32)
+        signInLabel.autoPinEdge(.top, to: .bottom, of: fieldsContainer, withOffset: 40)
+        
+        let signInButton = UIButton()
+        scrollViewContainer.addSubview(signInButton)
+        signInButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
+        signInButton.setTitle("Sign In", for: .normal)
+        signInButton.setTitleColor(UIColor.white, for: .normal)
+        signInButton.autoPinEdge(.top, to: .bottom, of: signInLabel)
+        signInButton.autoPinEdge(toSuperviewEdge: .left, withInset: 32)
+        signInButton.autoPinEdge(toSuperviewEdge: .right, withInset: 32)
+        signInButton.autoSetDimension(.height, toSize: 40)
+        
     }
     
     
@@ -196,6 +217,11 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
         signupButton.isEnabled = false
         registerUser(firstName: firstName, email: email, password: password, phoneNumber: phone)
         
+    }
+    
+    @objc func signInButtonTapped() {
+        let loginVC = LoginViewController(nibName: nil, bundle: nil)
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
     
     
@@ -254,8 +280,23 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
                 
             }
             
+            let firebaseProfileReqeust = user.createProfileChangeRequest()
+            firebaseProfileReqeust.displayName = firstName
+            firebaseProfileReqeust.commitChanges(completion: { (error) in
+                if let error = error {
+                    print("Error Saving user display name: \(error.localizedDescription)")
+                }
+            })
+            
             self.view.endEditing(true)
-            self.navigationController?.dismiss(animated: true, completion: nil)
+            
+            let alertController = UIAlertController(title: "Sign Up Successful", message: "Enjoy, \(firstName)!", preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: { alertAction in
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            })
+            alertController.addAction(okayAction)
+            self.present(alertController, animated: true, completion: nil)
+            
         }
     }
     

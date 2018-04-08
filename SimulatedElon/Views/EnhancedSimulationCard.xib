@@ -29,7 +29,7 @@
                         <constraint firstAttribute="height" constant="30" id="H1g-XA-iR7"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
-                    <color key="textColor" red="0.13206072180999209" green="0.28418717265174187" blue="0.32392131979695427" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="textColor" red="0.13333333333333333" green="0.28235294117647058" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✅ Unlock full simulation capabilities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRl-Nh-12e">

@@ -9,10 +9,13 @@
 import UIKit
 import PureLayout
 import StoreKit
+import Firebase
 
-class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
+internal final class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
     
-    let mainScrollView = UIScrollView()
+    private let mainScrollView = UIScrollView()
+    private var scrollContentView = UIView()
+    
     let purchasesManager = InAppPurchasesManager.shared()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -27,6 +30,10 @@ class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
         super.viewDidLoad()
         self.title = "Settings"
         
+        NotificationCenter.default.addObserver(self, selector: #selector(inAppPurchasesManagerRestorePurchasesSuccess), name: InAppPurchasesManagerRestorePurchasesSuccessNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(inAppPurchasesManagerRestorePurchasesFail), name: InAppPurchasesManagerRestorePurchasesFailureNotification, object: nil)
+        
+        // Background view setup
         let backgroundImage = UIImageView(image: UIImage(named: "edgeBackground.jpg"))
         self.view.addSubview(backgroundImage)
         backgroundImage.autoPinEdgesToSuperviewEdges()
@@ -34,11 +41,6 @@ class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
         let navItem = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(dismissButtonTapped))
         navItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.colorFromHex("4A9DB2")], for: .normal)
         self.navigationItem.leftBarButtonItem = navItem
-        
-        // Logic
-        purchasesManager.delegate = self
-        purchasesManager.getProducts()
-        
         
         // SetupViews
         self.view.addSubview(mainScrollView)
@@ -54,13 +56,44 @@ class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
         mainScrollView.autoPinEdge(toSuperviewEdge: .right)
         mainScrollView.autoPinEdge(toSuperviewEdge: .bottom)
         
-        let scrollContentView = UIView()
-
+        // Add the rest of the dynamic UI interface
+        self.reloadSubviews()
+        
+        // ********************************
+        // Setup Logic
+        purchasesManager.delegate = self
+        purchasesManager.getProducts()
+        
+        let isPremium = purchasesManager.isPremium
+        let isTrial = purchasesManager.isTrial
+        
+        print("THIS: isPremium: \(isPremium), isTrial: \(isTrial)")
+        
+        // Remove premium user priviledge if not subscribed anymore
+        if let userId = Auth.auth().currentUser?.uid {
+            Database.database().reference(withPath: "users/\(userId)/premium").setValue(isPremium)
+        }
+        
+        // Reload interface to account for user premium state change
+        OperationQueue.main.addOperation {
+            self.reloadSubviews()
+        }
+    }
+    
+    func reloadSubviews() {
+        scrollContentView.removeFromSuperview()
+        
+        scrollContentView = UIView()
         scrollContentView.backgroundColor = UIColor.clear
         mainScrollView.addSubview(scrollContentView)
         scrollContentView.autoPinEdgesToSuperviewEdges()
         scrollContentView.autoMatch(.width, to: .width, of: view)
-        scrollContentView.autoSetDimension(.height, toSize: 1200)
+        
+        var viewHeight = CGFloat(1200)
+        if Auth.auth().currentUser?.uid != nil {
+            viewHeight = 700
+        }
+        scrollContentView.autoSetDimension(.height, toSize: viewHeight)
         
         let _ = "🛠⚙️🔬🚀"
         let upgradesLabel = UILabel()
@@ -72,28 +105,43 @@ class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
         upgradesLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
         upgradesLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 30)
         
-        
         let enhancedSimulation = EnhancedSimulationCard.instanceFromNib()
-        scrollContentView.addSubview(enhancedSimulation)
-        enhancedSimulation.layer.borderColor = UIColor(red: 30, green: 30, blue: 30, alpha: 1).cgColor
-        enhancedSimulation.layer.borderWidth = 4
-        enhancedSimulation.layer.cornerRadius = 30
-        enhancedSimulation.layer.masksToBounds = true
-        enhancedSimulation.autoPinEdge(.top, to: .bottom, of: upgradesLabel, withOffset: 16)
-        enhancedSimulation.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
-        enhancedSimulation.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
-        enhancedSimulation.autoSetDimension(.height, toSize: 343)
-        
         let lifetime = LifetimeVIPCard.instanceFromNib()
-        scrollContentView.addSubview(lifetime)
-        lifetime.layer.cornerRadius = 30
-        lifetime.layer.masksToBounds = true
-        lifetime.layer.borderColor = UIColor(red: 30, green: 30, blue: 30, alpha: 1).cgColor
-        lifetime.layer.borderWidth = 4
-        lifetime.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
-        lifetime.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
-        lifetime.autoPinEdge(.top, to: .bottom, of: enhancedSimulation, withOffset: 16)
-        lifetime.autoSetDimension(.height, toSize: 298)
+        let premiumManagement = PremiumManagementCard.instanceFromNib()
+        
+        if purchasesManager.isPremium {
+            scrollContentView.addSubview(premiumManagement)
+            premiumManagement.presentingController = self
+            premiumManagement.layer.borderColor = UIColor(red: 30, green: 30, blue: 30, alpha: 1).cgColor
+            premiumManagement.layer.borderWidth = 4
+            premiumManagement.layer.cornerRadius = 30
+            premiumManagement.layer.masksToBounds = true
+            premiumManagement.autoPinEdge(.top, to: .bottom, of: upgradesLabel, withOffset: 16)
+            premiumManagement.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
+            premiumManagement.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
+            premiumManagement.autoSetDimension(.height, toSize: 200)
+            
+        } else {
+            scrollContentView.addSubview(enhancedSimulation)
+            enhancedSimulation.layer.borderColor = UIColor(red: 30, green: 30, blue: 30, alpha: 1).cgColor
+            enhancedSimulation.layer.borderWidth = 4
+            enhancedSimulation.layer.cornerRadius = 30
+            enhancedSimulation.layer.masksToBounds = true
+            enhancedSimulation.autoPinEdge(.top, to: .bottom, of: upgradesLabel, withOffset: 16)
+            enhancedSimulation.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
+            enhancedSimulation.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
+            enhancedSimulation.autoSetDimension(.height, toSize: 343)
+            
+            scrollContentView.addSubview(lifetime)
+            lifetime.layer.cornerRadius = 30
+            lifetime.layer.masksToBounds = true
+            lifetime.layer.borderColor = UIColor(red: 30, green: 30, blue: 30, alpha: 1).cgColor
+            lifetime.layer.borderWidth = 4
+            lifetime.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
+            lifetime.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
+            lifetime.autoPinEdge(.top, to: .bottom, of: enhancedSimulation, withOffset: 16)
+            lifetime.autoSetDimension(.height, toSize: 298)
+        }
         
         let accountLabel = UILabel()
         scrollContentView.addSubview(accountLabel)
@@ -102,10 +150,17 @@ class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
         accountLabel.text = "⚙️ Account"
         accountLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
         accountLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
-        accountLabel.autoPinEdge(.top, to: .bottom, of: lifetime, withOffset: 30)
+        if purchasesManager.isPremium {
+            accountLabel.autoPinEdge(.top, to: .bottom, of: premiumManagement, withOffset: 30)
+        } else {
+            accountLabel.autoPinEdge(.top, to: .bottom, of: lifetime, withOffset: 30)
+        }
         
         let contactSupport = ContactSupportCard.instanceFromNib()
         scrollContentView.addSubview(contactSupport)
+        let shouldPromptSignIn = Auth.auth().currentUser?.uid == nil
+        contactSupport.updateButtonStates(isSignIn: shouldPromptSignIn, isPremium: purchasesManager.isPremium)
+        
         contactSupport.presentingVC = self
         contactSupport.layer.cornerRadius = 30
         contactSupport.layer.masksToBounds = true
@@ -116,17 +171,11 @@ class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
         contactSupport.autoPinEdge(.top, to: .bottom, of: accountLabel, withOffset: 16)
         contactSupport.autoSetDimension(.height, toSize: 251)
         
-        
-        // Setup Logic
-        purchasesManager.verifySubscription { (success, value) in
-            print("Was success? \(success), value: \(value)")
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        
     }
     
     @objc func dismissButtonTapped() {
@@ -136,19 +185,51 @@ class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
     
     // MARK: inAppPurchasesManagerDelegate
     func inAppPurchasesManager(manager: InAppPurchasesManager, didEnablePlanOfType type: PremiumPlanType) {
-        print("did enable plan of type \(type.rawValue)")
+        print("Enabled plan: \(type.rawValue)")
+        if Auth.auth().currentUser?.uid != nil {
+            let alertController = UIAlertController(title: "Upgrade Successful", message: "Premium features are now enabled", preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alertController.addAction(okayAction)
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            let premiumOnboardVC = PremiumOnboardingViewController(nibName: nil, bundle: nil)
+            self.navigationController?.pushViewController(premiumOnboardVC, animated: true)
+        }
         
-        let premiumOnboardVC = PremiumOnboardingViewController(nibName: nil, bundle: nil)
-        self.navigationController?.pushViewController(premiumOnboardVC, animated: true)
     }
     
     func inAppPurchasesManagerTransactionDidFail(manager: InAppPurchasesManager) {
-//        let alertController = UIAlertController(title: "Purchases Unsuccessful", message: "Upgrade was not enabled", preferredStyle: .alert)
-//        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
-//        alertController.addAction(okayAction)
-//        self.present(alertController, animated: true, completion: nil)
-        
-        let premiumOnboardVC = PremiumOnboardingViewController(nibName: nil, bundle: nil)
-        self.navigationController?.pushViewController(premiumOnboardVC, animated: true)
+        let alertController = UIAlertController(title: "Upgrade Unsuccessful", message: "Premium features are not enabled", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(okayAction)
+        self.present(alertController, animated: true, completion: nil)
     }
+    
+    // inAppPurchasesManager Restore Notification
+    @objc func inAppPurchasesManagerRestorePurchasesSuccess() {
+        let alertController = UIAlertController(title: "Restore Purchase Successful", message: "Premium features are now enabled", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(okayAction)
+        self.present(alertController, animated: true) {
+            OperationQueue.main.addOperation {
+                self.reloadSubviews()
+            }
+        }
+    }
+    
+    @objc func inAppPurchasesManagerRestorePurchasesFail(notification: NSNotification) {
+        var reasonString = ""
+        if let userInfo = notification.userInfo, let reason = userInfo["reason"] as? String {
+            reasonString = reason
+        }
+        let alertController = UIAlertController(title: "Restore Purchase Unsuccessful", message: "Premium features are not enabled. \(reasonString)", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(okayAction)
+        self.present(alertController, animated: true) {
+            OperationQueue.main.addOperation {
+                self.reloadSubviews()
+            }
+        }
+    }
+    
 }

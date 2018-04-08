@@ -10,6 +10,9 @@
 		6B412EEA564A073056D04BAD /* Pods_SimulatedElon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA2F929180FA0A6830327FF /* Pods_SimulatedElon.framework */; };
 		762702CD2068DB70005B8CCB /* UIColor+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762702CC2068DB70005B8CCB /* UIColor+Utility.swift */; };
 		762702CF2068E5CD005B8CCB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762702CE2068E5CD005B8CCB /* StoreKit.framework */; };
+		76273504207ABCAB0052E25A /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76273502207ABCAA0052E25A /* QuestionTableViewCell.swift */; };
+		76273505207ABCAB0052E25A /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76273503207ABCAB0052E25A /* QuestionTableViewCell.xib */; };
+		76273507207ABCF70052E25A /* QuestionTableViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76273506207ABCF70052E25A /* QuestionTableViewCellHeader.swift */; };
 		76328F2D205DC9AD003C23C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76328F2C205DC9AD003C23C5 /* AppDelegate.swift */; };
 		76328F2F205DC9AD003C23C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76328F2E205DC9AD003C23C5 /* ViewController.swift */; };
 		76328F32205DC9AD003C23C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76328F30205DC9AD003C23C5 /* Main.storyboard */; };
@@ -54,6 +57,10 @@
 		7662CF8D20638AC100BB4195 /* bubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF8C20638AC000BB4195 /* bubble2.png */; };
 		7662CF9120638D6000BB4195 /* soundOrangeDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 7662CF9020638D5F00BB4195 /* soundOrangeDot.png */; };
 		7662CF93206390A700BB4195 /* SEUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7662CF92206390A700BB4195 /* SEUtility.swift */; };
+		769A343620717D2900454D02 /* PremiumManagementCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A343520717D2900454D02 /* PremiumManagementCard.swift */; };
+		769A343820717D3700454D02 /* PremiumManagementCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769A343720717D3700454D02 /* PremiumManagementCard.xib */; };
+		769A343C2071844900454D02 /* InAppPurchasesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 769A343B2071844900454D02 /* InAppPurchasesHelper.m */; };
+		769A343E2071890100454D02 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A343D2071890100454D02 /* UserManager.swift */; };
 		76E288772060DB3400D4256F /* 513.wav in Resources */ = {isa = PBXBuildFile; fileRef = 76E287A62060DB3400D4256F /* 513.wav */; };
 		76E288782060DB3400D4256F /* 711.wav in Resources */ = {isa = PBXBuildFile; fileRef = 76E287A72060DB3400D4256F /* 711.wav */; };
 		76E288792060DB3400D4256F /* 315.wav in Resources */ = {isa = PBXBuildFile; fileRef = 76E287A82060DB3400D4256F /* 315.wav */; };
@@ -366,6 +373,9 @@
 		762702CC2068DB70005B8CCB /* UIColor+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utility.swift"; sourceTree = "<group>"; };
 		762702CE2068E5CD005B8CCB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		762702D02068F0D3005B8CCB /* SimulatedElon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimulatedElon.entitlements; sourceTree = "<group>"; };
+		76273502207ABCAA0052E25A /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		76273503207ABCAB0052E25A /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
+		76273506207ABCF70052E25A /* QuestionTableViewCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCellHeader.swift; sourceTree = "<group>"; };
 		76328F29205DC9AD003C23C5 /* SimulatedElon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimulatedElon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76328F2C205DC9AD003C23C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76328F2E205DC9AD003C23C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -416,6 +426,12 @@
 		7662CF8C20638AC000BB4195 /* bubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble2.png; sourceTree = "<group>"; };
 		7662CF9020638D5F00BB4195 /* soundOrangeDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundOrangeDot.png; sourceTree = "<group>"; };
 		7662CF92206390A700BB4195 /* SEUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEUtility.swift; sourceTree = "<group>"; };
+		769A343520717D2900454D02 /* PremiumManagementCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumManagementCard.swift; sourceTree = "<group>"; };
+		769A343720717D3700454D02 /* PremiumManagementCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremiumManagementCard.xib; sourceTree = "<group>"; };
+		769A34392071844800454D02 /* SimulatedElon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimulatedElon-Bridging-Header.h"; sourceTree = "<group>"; };
+		769A343A2071844900454D02 /* InAppPurchasesHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InAppPurchasesHelper.h; sourceTree = "<group>"; };
+		769A343B2071844900454D02 /* InAppPurchasesHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InAppPurchasesHelper.m; sourceTree = "<group>"; };
+		769A343D2071890100454D02 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		76E287A62060DB3400D4256F /* 513.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 513.wav; sourceTree = "<group>"; };
 		76E287A72060DB3400D4256F /* 711.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 711.wav; sourceTree = "<group>"; };
 		76E287A82060DB3400D4256F /* 315.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 315.wav; sourceTree = "<group>"; };
@@ -767,6 +783,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7627350120797C960052E25A /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				769A343A2071844900454D02 /* InAppPurchasesHelper.h */,
+				769A343B2071844900454D02 /* InAppPurchasesHelper.m */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
 		76328F20205DC9AD003C23C5 = {
 			isa = PBXGroup;
 			children = (
@@ -794,6 +819,7 @@
 			children = (
 				762702D02068F0D3005B8CCB /* SimulatedElon.entitlements */,
 				76328F2C205DC9AD003C23C5 /* AppDelegate.swift */,
+				769A343D2071890100454D02 /* UserManager.swift */,
 				76328F2E205DC9AD003C23C5 /* ViewController.swift */,
 				76328F30205DC9AD003C23C5 /* Main.storyboard */,
 				763F920D20672AF500902513 /* ChatBubbleView.swift */,
@@ -804,10 +830,14 @@
 				764B19662070D62B007426EB /* LoginViewController.xib */,
 				763F91F32066466300902513 /* SettingsViewController.swift */,
 				763F921120674D3D00902513 /* QuestionViewController.swift */,
+				76273502207ABCAA0052E25A /* QuestionTableViewCell.swift */,
+				76273503207ABCAB0052E25A /* QuestionTableViewCell.xib */,
+				76273506207ABCF70052E25A /* QuestionTableViewCellHeader.swift */,
 				764B19642070D5FA007426EB /* Views */,
 				7662CF92206390A700BB4195 /* SEUtility.swift */,
 				762702CC2068DB70005B8CCB /* UIColor+Utility.swift */,
 				764B17422069FDB3007426EB /* InAppPurchasesManager.swift */,
+				7627350120797C960052E25A /* Deprecated */,
 				76328F36205DC9AD003C23C5 /* Assets.xcassets */,
 				764B196D20716364007426EB /* audio */,
 				76E289CD2062233300D4256F /* images */,
@@ -817,6 +847,7 @@
 				76328F3B205DC9AD003C23C5 /* Info.plist */,
 				763F9216206761A100902513 /* GoogleService-Info.plist */,
 				76328F33205DC9AD003C23C5 /* SimulatedElon.xcdatamodeld */,
+				769A34392071844800454D02 /* SimulatedElon-Bridging-Header.h */,
 			);
 			path = SimulatedElon;
 			sourceTree = "<group>";
@@ -848,6 +879,8 @@
 				763F91FF2067165B00902513 /* LifetimeVIPCard.xib */,
 				763F920520671F2B00902513 /* ContactSupportCard.swift */,
 				763F920720671F3900902513 /* ContactSupportCard.xib */,
+				769A343520717D2900454D02 /* PremiumManagementCard.swift */,
+				769A343720717D3700454D02 /* PremiumManagementCard.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1251,6 +1284,7 @@
 				TargetAttributes = {
 					76328F28205DC9AD003C23C5 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
@@ -1370,6 +1404,7 @@
 				76E2899C2060DB4100D4256F /* 22.png in Resources */,
 				76E289B82060DB4100D4256F /* 50.png in Resources */,
 				764B19682070D62B007426EB /* LoginViewController.xib in Resources */,
+				76273505207ABCAB0052E25A /* QuestionTableViewCell.xib in Resources */,
 				76E2899B2060DB4100D4256F /* 34.png in Resources */,
 				76E289132060DB3400D4256F /* 724.wav in Resources */,
 				76E289A02060DB4100D4256F /* 27.png in Resources */,
@@ -1606,6 +1641,7 @@
 				76E288892060DB3400D4256F /* 529.wav in Resources */,
 				76E288A82060DB3400D4256F /* 229.wav in Resources */,
 				763F921020672B4700902513 /* ChatBubbleView.xib in Resources */,
+				769A343820717D3700454D02 /* PremiumManagementCard.xib in Resources */,
 				76E288D02060DB3400D4256F /* 223.wav in Resources */,
 				763F920C206726AC00902513 /* question.png in Resources */,
 				76E2890A2060DB3400D4256F /* 569.wav in Resources */,
@@ -1708,19 +1744,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				763F91FE2067164800902513 /* LifetimeVIPCard.swift in Sources */,
+				76273507207ABCF70052E25A /* QuestionTableViewCellHeader.swift in Sources */,
 				764B17432069FDB3007426EB /* InAppPurchasesManager.swift in Sources */,
 				76328F2F205DC9AD003C23C5 /* ViewController.swift in Sources */,
 				764B19672070D62B007426EB /* LoginViewController.swift in Sources */,
 				76328F2D205DC9AD003C23C5 /* AppDelegate.swift in Sources */,
 				763F920E20672AF500902513 /* ChatBubbleView.swift in Sources */,
 				76328F35205DC9AD003C23C5 /* SimulatedElon.xcdatamodeld in Sources */,
+				769A343C2071844900454D02 /* InAppPurchasesHelper.m in Sources */,
 				763F91F82067118D00902513 /* EnhancedSimulationCard.swift in Sources */,
 				7662CF93206390A700BB4195 /* SEUtility.swift in Sources */,
 				762702CD2068DB70005B8CCB /* UIColor+Utility.swift in Sources */,
+				769A343620717D2900454D02 /* PremiumManagementCard.swift in Sources */,
 				763F920620671F2B00902513 /* ContactSupportCard.swift in Sources */,
 				763F91F42066466300902513 /* SettingsViewController.swift in Sources */,
 				763F921220674D3D00902513 /* QuestionViewController.swift in Sources */,
+				76273504207ABCAB0052E25A /* QuestionTableViewCell.swift in Sources */,
 				764B1746206A2009007426EB /* PremiumOnboardingViewController.swift in Sources */,
+				769A343E2071890100454D02 /* UserManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1887,6 +1928,7 @@
 			baseConfigurationReference = BB7E7B0AF58DBFCC6FDF627C /* Pods-SimulatedElon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SimulatedElon/SimulatedElon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52GHE2Q332;
@@ -1898,6 +1940,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SimulatedElon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SimulatedElon/SimulatedElon-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1908,6 +1952,7 @@
 			baseConfigurationReference = 8BE16FD81A00D07E02B6F2FE /* Pods-SimulatedElon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SimulatedElon/SimulatedElon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52GHE2Q332;
@@ -1919,6 +1964,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SimulatedElon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SimulatedElon/SimulatedElon-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

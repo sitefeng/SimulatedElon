@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="81" id="KGk-i7-Jjw" customClass="QuestionTableViewCell" customModule="SimulatedElon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="387" height="80.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ho-kZ-9V0">
+                        <rect key="frame" x="16" y="0.0" width="355" height="71"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hdddddddlkl klk lkl klk l nklnknklkl klmln ib oojb faf  " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgx-z5-1EY">
+                                <rect key="frame" x="71" y="4" width="276" height="63"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="textColor" red="0.1333333333" green="0.28235294119999998" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="question.png" translatesAutoresizingMaskIntoConstraints="NO" id="zIS-4N-AFf">
+                                <rect key="frame" x="8" y="8" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="M2L-AO-VJ1"/>
+                                    <constraint firstAttribute="width" constant="55" id="Xr2-JE-hMK"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zIS-4N-AFf" firstAttribute="centerY" secondItem="Lgx-z5-1EY" secondAttribute="centerY" id="4yj-u0-fnZ"/>
+                            <constraint firstItem="Lgx-z5-1EY" firstAttribute="leading" secondItem="zIS-4N-AFf" secondAttribute="trailing" constant="8" id="7hr-y8-bjz"/>
+                            <constraint firstItem="Lgx-z5-1EY" firstAttribute="top" secondItem="7Ho-kZ-9V0" secondAttribute="top" constant="4" id="QZW-ik-cUe"/>
+                            <constraint firstAttribute="height" constant="71" id="TeB-Ey-hZz"/>
+                            <constraint firstItem="zIS-4N-AFf" firstAttribute="leading" secondItem="7Ho-kZ-9V0" secondAttribute="leading" constant="8" id="dnD-Uc-Ciu"/>
+                            <constraint firstAttribute="trailing" secondItem="Lgx-z5-1EY" secondAttribute="trailing" constant="8" id="h8L-9h-ITz"/>
+                            <constraint firstAttribute="bottom" secondItem="Lgx-z5-1EY" secondAttribute="bottom" constant="4" id="q4M-wE-aC4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="7Ho-kZ-9V0" secondAttribute="trailing" constant="16" id="0vB-jm-6Xe"/>
+                    <constraint firstItem="7Ho-kZ-9V0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7w0-ns-Pht"/>
+                    <constraint firstItem="7Ho-kZ-9V0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="mgR-tb-evw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="containerView" destination="7Ho-kZ-9V0" id="Rl3-jZ-KSk"/>
+                <outlet property="questionIcon" destination="zIS-4N-AFf" id="HvM-Zj-efO"/>
+                <outlet property="questionLabel" destination="Lgx-z5-1EY" id="HbJ-0p-KGr"/>
+            </connections>
+            <point key="canvasLocation" x="-124.5" y="14.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="question.png" width="96" height="96"/>
+    </resources>
+</document>
