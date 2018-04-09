@@ -10,6 +10,7 @@ import UIKit
 import PureLayout
 import Firebase
 import SkyFloatingLabelTextField
+import Mixpanel
 
 class LoginViewController: UIViewController {
 
@@ -28,8 +29,10 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Login"
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.mixpanel.track("login_viewed")
         
+        self.title = "Login"
         
         // Setup Views
         let scrollView = UIScrollView()

@@ -29,6 +29,9 @@ internal final class SettingsViewController: UIViewController, InAppPurchasesMan
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.mixpanel.track("settings_viewed")
+        
         self.title = "Settings"
         
         NotificationCenter.default.addObserver(self, selector: #selector(inAppPurchasesManagerRestorePurchasesSuccess), name: InAppPurchasesManagerRestorePurchasesSuccessNotification, object: nil)
@@ -89,7 +92,7 @@ internal final class SettingsViewController: UIViewController, InAppPurchasesMan
         scrollContentView.autoMatch(.width, to: .width, of: view)
         
         var viewHeight = CGFloat(1200)
-        if Auth.auth().currentUser?.uid != nil {
+        if purchasesManager.isPremium {
             viewHeight = 700
         }
         scrollContentView.autoSetDimension(.height, toSize: viewHeight)

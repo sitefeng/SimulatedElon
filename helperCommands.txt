@@ -22,4 +22,5 @@ functions logs read
 gcloud auth print-access-token
 
 =================
-ngrok http 1337
+Ngrok: within the root directory of node js, run:
+./ngrok http 1337

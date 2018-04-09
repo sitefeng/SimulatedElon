@@ -40,6 +40,9 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.mixpanel.track("signup_viewed")
+        
         self.title = "Account Setup"
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
