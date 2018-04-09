@@ -13,6 +13,7 @@ import Firebase
 
 internal final class SettingsViewController: UIViewController, InAppPurchasesManagerDelegate {
     
+    
     private let mainScrollView = UIScrollView()
     private var scrollContentView = UIView()
     
@@ -62,12 +63,10 @@ internal final class SettingsViewController: UIViewController, InAppPurchasesMan
         // ********************************
         // Setup Logic
         purchasesManager.delegate = self
-        purchasesManager.getProducts()
+        purchasesManager.getProductPrices()
         
         let isPremium = purchasesManager.isPremium
         let isTrial = purchasesManager.isTrial
-        
-        print("THIS: isPremium: \(isPremium), isTrial: \(isTrial)")
         
         // Remove premium user priviledge if not subscribed anymore
         if let userId = Auth.auth().currentUser?.uid {
@@ -123,6 +122,7 @@ internal final class SettingsViewController: UIViewController, InAppPurchasesMan
             
         } else {
             scrollContentView.addSubview(enhancedSimulation)
+            enhancedSimulation.updateForLocalPrice(yearlyPriceString: purchasesManager.yearlyPriceString, yearlyConvertedMonthlyString: purchasesManager.yearlyConvertedMonthlyPriceString)
             enhancedSimulation.layer.borderColor = UIColor(red: 30, green: 30, blue: 30, alpha: 1).cgColor
             enhancedSimulation.layer.borderWidth = 4
             enhancedSimulation.layer.cornerRadius = 30
@@ -133,6 +133,7 @@ internal final class SettingsViewController: UIViewController, InAppPurchasesMan
             enhancedSimulation.autoSetDimension(.height, toSize: 343)
             
             scrollContentView.addSubview(lifetime)
+            lifetime.updateForLocalPrice(priceString: purchasesManager.lifetimePriceString)
             lifetime.layer.cornerRadius = 30
             lifetime.layer.masksToBounds = true
             lifetime.layer.borderColor = UIColor(red: 30, green: 30, blue: 30, alpha: 1).cgColor
@@ -203,6 +204,12 @@ internal final class SettingsViewController: UIViewController, InAppPurchasesMan
         let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
         alertController.addAction(okayAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func inAppPurchasesManager(manager: InAppPurchasesManager, didGetYearlyPrice yearlyPrice: String, lifetimePrice: String) {
+        OperationQueue.main.addOperation {
+            self.reloadSubviews()
+        }
     }
     
     // inAppPurchasesManager Restore Notification

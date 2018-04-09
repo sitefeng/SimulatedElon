@@ -40,7 +40,7 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Enhanced Simulation Setup"
+        self.title = "Account Setup"
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
 
@@ -262,6 +262,7 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
                 if (phoneNumber.count == 10) {
                     properPhoneNumber = "1" + phoneNumber
                 }
+                
                 Database.database().reference(withPath: "phoneToUserId").child(properPhoneNumber).observeSingleEvent(of: .value, with: { (snap) in
                     if snap.value == nil {
                         Database.database().reference(withPath: "phoneToUserId/").child(properPhoneNumber).setValue(user.uid)
@@ -288,6 +289,10 @@ class PremiumOnboardingViewController: UIViewController, UITextFieldDelegate {
                 }
             })
             
+            // Alert admin when user signup to give SMS welcome message
+            APIRequests.welcomeNewUser(userId: user.uid, phoneNumber: phoneNumber)
+            
+            // Exit view sequence
             self.view.endEditing(true)
             
             let alertController = UIAlertController(title: "Sign Up Successful", message: "Enjoy, \(firstName)!", preferredStyle: .alert)

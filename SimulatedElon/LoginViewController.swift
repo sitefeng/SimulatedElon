@@ -153,7 +153,7 @@ class LoginViewController: UIViewController {
         signupButton.isEnabled = false
         
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            guard let _ = user else {
+            guard let user = user else {
                 self.signupButton.titleLabel?.text = "Done"
                 self.signupButton.isEnabled = true
                 
@@ -171,7 +171,7 @@ class LoginViewController: UIViewController {
             self.view.endEditing(true)
             
             var successMessage = "Welcome back!"
-            if let userName = user?.displayName {
+            if let userName = user.displayName {
                 successMessage = "Welcome back, \(userName)!"
             }
             let alertController = UIAlertController(title: "Logged In", message: successMessage, preferredStyle: .alert)

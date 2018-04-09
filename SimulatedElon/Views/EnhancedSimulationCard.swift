@@ -16,6 +16,10 @@ class EnhancedSimulationCard: UIView {
         return UINib(nibName: "EnhancedSimulationCard", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! EnhancedSimulationCard
     }
     
+    func updateForLocalPrice(yearlyPriceString: String, yearlyConvertedMonthlyString: String) {
+        priceLabel.text = "7 days free trial, then only \(yearlyPriceString)/yr (\(yearlyConvertedMonthlyString)/month)"
+    }
+    
     @IBAction func purchaseButtonTapped(_ sender: Any) {
         InAppPurchasesManager.shared().purchaseYearly()
     }

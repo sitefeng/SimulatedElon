@@ -13,6 +13,7 @@
 		76273504207ABCAB0052E25A /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76273502207ABCAA0052E25A /* QuestionTableViewCell.swift */; };
 		76273505207ABCAB0052E25A /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76273503207ABCAB0052E25A /* QuestionTableViewCell.xib */; };
 		76273507207ABCF70052E25A /* QuestionTableViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76273506207ABCF70052E25A /* QuestionTableViewCellHeader.swift */; };
+		76273509207AEA850052E25A /* APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76273508207AEA850052E25A /* APIRequests.swift */; };
 		76328F2D205DC9AD003C23C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76328F2C205DC9AD003C23C5 /* AppDelegate.swift */; };
 		76328F2F205DC9AD003C23C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76328F2E205DC9AD003C23C5 /* ViewController.swift */; };
 		76328F32205DC9AD003C23C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76328F30205DC9AD003C23C5 /* Main.storyboard */; };
@@ -376,6 +377,7 @@
 		76273502207ABCAA0052E25A /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		76273503207ABCAB0052E25A /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
 		76273506207ABCF70052E25A /* QuestionTableViewCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCellHeader.swift; sourceTree = "<group>"; };
+		76273508207AEA850052E25A /* APIRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequests.swift; sourceTree = "<group>"; };
 		76328F29205DC9AD003C23C5 /* SimulatedElon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimulatedElon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76328F2C205DC9AD003C23C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76328F2E205DC9AD003C23C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -792,6 +794,25 @@
 			path = Deprecated;
 			sourceTree = "<group>";
 		};
+		7627350A207AEA910052E25A /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				769A343D2071890100454D02 /* UserManager.swift */,
+				76273508207AEA850052E25A /* APIRequests.swift */,
+				764B17422069FDB3007426EB /* InAppPurchasesManager.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		7627350B207AEAA20052E25A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				7662CF92206390A700BB4195 /* SEUtility.swift */,
+				762702CC2068DB70005B8CCB /* UIColor+Utility.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		76328F20205DC9AD003C23C5 = {
 			isa = PBXGroup;
 			children = (
@@ -819,7 +840,8 @@
 			children = (
 				762702D02068F0D3005B8CCB /* SimulatedElon.entitlements */,
 				76328F2C205DC9AD003C23C5 /* AppDelegate.swift */,
-				769A343D2071890100454D02 /* UserManager.swift */,
+				7627350B207AEAA20052E25A /* Utility */,
+				7627350A207AEA910052E25A /* Logic */,
 				76328F2E205DC9AD003C23C5 /* ViewController.swift */,
 				76328F30205DC9AD003C23C5 /* Main.storyboard */,
 				763F920D20672AF500902513 /* ChatBubbleView.swift */,
@@ -834,9 +856,6 @@
 				76273503207ABCAB0052E25A /* QuestionTableViewCell.xib */,
 				76273506207ABCF70052E25A /* QuestionTableViewCellHeader.swift */,
 				764B19642070D5FA007426EB /* Views */,
-				7662CF92206390A700BB4195 /* SEUtility.swift */,
-				762702CC2068DB70005B8CCB /* UIColor+Utility.swift */,
-				764B17422069FDB3007426EB /* InAppPurchasesManager.swift */,
 				7627350120797C960052E25A /* Deprecated */,
 				76328F36205DC9AD003C23C5 /* Assets.xcassets */,
 				764B196D20716364007426EB /* audio */,
@@ -1745,6 +1764,7 @@
 			files = (
 				763F91FE2067164800902513 /* LifetimeVIPCard.swift in Sources */,
 				76273507207ABCF70052E25A /* QuestionTableViewCellHeader.swift in Sources */,
+				76273509207AEA850052E25A /* APIRequests.swift in Sources */,
 				764B17432069FDB3007426EB /* InAppPurchasesManager.swift in Sources */,
 				76328F2F205DC9AD003C23C5 /* ViewController.swift in Sources */,
 				764B19672070D62B007426EB /* LoginViewController.swift in Sources */,

@@ -80,7 +80,7 @@
                         <action selector="purchaseButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="h1z-1S-J8a"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One time payment of $59.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jda-hm-Ur0">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One time payment of $XX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jda-hm-Ur0">
                     <rect key="frame" x="16" y="253" width="292" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="2zz-Sm-x6A"/>
@@ -124,7 +124,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="94" y="-124.5"/>
+            <connections>
+                <outlet property="priceLabel" destination="Jda-hm-Ur0" id="h3U-6T-5B8"/>
+            </connections>
+            <point key="canvasLocation" x="-52" y="-103"/>
         </view>
     </objects>
     <resources>

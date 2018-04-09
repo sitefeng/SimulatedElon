@@ -97,7 +97,7 @@
                     <color key="textColor" red="0.2895828104" green="0.61741936500000005" blue="0.69947652279999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 days free trial, then only $23.99/yr ($2/month)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXP-Ds-D7U">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 days free trial, then only $XX/yr ($X/month)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXP-Ds-D7U">
                     <rect key="frame" x="16" y="298" width="307" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="26n-EO-b3b"/>

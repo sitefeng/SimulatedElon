@@ -21,6 +21,7 @@ enum PremiumPlanType: String {
 }
 
 protocol InAppPurchasesManagerDelegate: class {
+    func inAppPurchasesManager(manager: InAppPurchasesManager, didGetYearlyPrice yearlyPrice: String, lifetimePrice: String)
     func inAppPurchasesManager(manager: InAppPurchasesManager, didEnablePlanOfType type:PremiumPlanType)
     func inAppPurchasesManagerTransactionDidFail(manager: InAppPurchasesManager)
 }
@@ -38,7 +39,11 @@ class InAppPurchasesManager: NSObject, SKProductsRequestDelegate, SKPaymentTrans
     private let productIds = ["simulatedelon1", "lifetimeSimulation"]
     
     private(set) var yearlyPlan: SKProduct?
+    private(set) var yearlyPriceString: String = ""
+    private(set) var yearlyConvertedMonthlyPriceString: String = ""
+    
     private(set) var lifetimePlan: SKProduct?
+    private(set) var lifetimePriceString: String = ""
     
     override init() {
         super.init()
@@ -54,12 +59,10 @@ class InAppPurchasesManager: NSObject, SKProductsRequestDelegate, SKPaymentTrans
         }
     }
     
-    func getProducts() {
+    func getProductPrices() {
         let productRequest = SKProductsRequest(productIdentifiers: Set(productIds))
         productRequest.delegate = self
         productRequest.start()
-        
-        SKPaymentQueue.default().add(self)
     }
     
     func purchaseYearly() {
@@ -86,15 +89,32 @@ class InAppPurchasesManager: NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     // MARK: SKProductRequestDelegate
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+
         for product in response.products {
-            print("PRODUCTT: \(product.localizedDescription)")
             if product.productIdentifier == productIds[0] {
                 yearlyPlan = product
+                yearlyPriceString = self.getPriceString(product: product, priceDividedBy: 1)
+                yearlyConvertedMonthlyPriceString = self.getPriceString(product: product, priceDividedBy: 12)
             }
             if product.productIdentifier == productIds[1] {
                 lifetimePlan = product
+                lifetimePriceString = self.getPriceString(product: product, priceDividedBy: 1)
             }
         }
+        self.delegate?.inAppPurchasesManager(manager: self, didGetYearlyPrice: yearlyPriceString, lifetimePrice: lifetimePriceString)
+    }
+    
+    private func getPriceString(product: SKProduct, priceDividedBy divisionFactor: Double) -> String {
+        var price = ""
+        if let currencySymbol = product.priceLocale.currencySymbol {
+            price += currencySymbol
+        } else {
+            price += "$"
+        }
+        
+        let priceValue = String(format: "%.02f", product.price.doubleValue / divisionFactor)
+        price += priceValue
+        return price
     }
     
     // MARK: PaymentTransactionObserver
