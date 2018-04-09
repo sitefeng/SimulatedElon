@@ -100,7 +100,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         chatBubbleContainer.addSubview(chatBubble)
         chatBubble.autoPinEdgesToSuperviewEdges()
         
-        self.bubbleTexts = ["Nice to meet you! I am Simulated Elon with a virtual conciousness.",
+        self.bubbleTexts = ["Nice to meet you! I am Simulated Elon.",
                             "Tap the microphone button to ask a question, tap on my head to stop the audio at any time.",
                             "What do you wanna talk about today?"]
         self.displayBubbleTextsSequentially()
