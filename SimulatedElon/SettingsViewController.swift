@@ -91,7 +91,7 @@ internal final class SettingsViewController: UIViewController, InAppPurchasesMan
         scrollContentView.autoPinEdgesToSuperviewEdges()
         scrollContentView.autoMatch(.width, to: .width, of: view)
         
-        var viewHeight = CGFloat(1200)
+        var viewHeight = CGFloat(1400)
         if purchasesManager.isPremium {
             viewHeight = 700
         }
@@ -133,7 +133,19 @@ internal final class SettingsViewController: UIViewController, InAppPurchasesMan
             enhancedSimulation.autoPinEdge(.top, to: .bottom, of: upgradesLabel, withOffset: 16)
             enhancedSimulation.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
             enhancedSimulation.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
-            enhancedSimulation.autoSetDimension(.height, toSize: 343)
+            enhancedSimulation.autoSetDimension(.height, toSize: 363)
+            
+            let detailsLabel1 = UILabel()
+            scrollContentView.addSubview(detailsLabel1)
+            detailsLabel1.textColor = UIColor.white.withAlphaComponent(0.8)
+            detailsLabel1.textAlignment = .center
+            detailsLabel1.font = UIFont(name: "Futura-Medium", size: 10)
+            detailsLabel1.numberOfLines = 10
+            detailsLabel1.text = "Yearly subscription. Subscriptions may be managed by the user and auto-renewal may be turned off at any time by going to the user's Account Settings after purchase. Payment will be charged to to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged within 24-hours prior to the end of the current period, and identify the cost of the renewal. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable"
+            detailsLabel1.autoPinEdge(toSuperviewEdge: .left, withInset: 32)
+            detailsLabel1.autoPinEdge(toSuperviewEdge: .right, withInset: 32)
+            detailsLabel1.autoPinEdge(.top, to: .bottom, of: enhancedSimulation, withOffset: 16)
+            
             
             scrollContentView.addSubview(lifetime)
             lifetime.updateForLocalPrice(priceString: purchasesManager.lifetimePriceString)
@@ -143,8 +155,19 @@ internal final class SettingsViewController: UIViewController, InAppPurchasesMan
             lifetime.layer.borderWidth = 4
             lifetime.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
             lifetime.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
-            lifetime.autoPinEdge(.top, to: .bottom, of: enhancedSimulation, withOffset: 16)
-            lifetime.autoSetDimension(.height, toSize: 298)
+            lifetime.autoPinEdge(.top, to: .bottom, of: detailsLabel1, withOffset: 32)
+            lifetime.autoSetDimension(.height, toSize: 318)
+            
+            let detailsLabel2 = UILabel()
+            scrollContentView.addSubview(detailsLabel2)
+            detailsLabel2.textColor = UIColor.white.withAlphaComponent(0.8)
+            detailsLabel2.textAlignment = .center
+            detailsLabel2.font = UIFont(name: "Futura-Medium", size: 10)
+            detailsLabel2.numberOfLines = 3
+            detailsLabel2.text = "Payment will be charged to to iTunes Account at confirmation of purchase."
+            detailsLabel2.autoPinEdge(toSuperviewEdge: .left, withInset: 32)
+            detailsLabel2.autoPinEdge(toSuperviewEdge: .right, withInset: 32)
+            detailsLabel2.autoPinEdge(.top, to: .bottom, of: lifetime, withOffset: 16)
         }
         
         let accountLabel = UILabel()
@@ -157,7 +180,7 @@ internal final class SettingsViewController: UIViewController, InAppPurchasesMan
         if purchasesManager.isPremium {
             accountLabel.autoPinEdge(.top, to: .bottom, of: premiumManagement, withOffset: 30)
         } else {
-            accountLabel.autoPinEdge(.top, to: .bottom, of: lifetime, withOffset: 30)
+            accountLabel.autoPinEdge(.top, to: .bottom, of: lifetime, withOffset: 60)
         }
         
         let contactSupport = ContactSupportCard.instanceFromNib()

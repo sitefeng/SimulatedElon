@@ -25,4 +25,9 @@ class LifetimeVIPCard: UIView {
         InAppPurchasesManager.shared().purchaseLifetime()
     }
     
+    @IBAction func termsOfServiceTapped(_ sender: Any) {
+        let termsUrl = URL(string: "https://simulatedelon.github.io")!
+        UIApplication.shared.open(termsUrl, options: [:], completionHandler: nil)
+    }
+    
 }

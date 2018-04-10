@@ -226,11 +226,11 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
         self.audioPlayerInitialized = true
         
-        let audioFilePathOrNil = Bundle.main.path(forResource: audioFileId, ofType: "wav")
+        let audioFilePathOrNil = Bundle.main.path(forResource: "\(audioFileId)-music", ofType: "mp3")
         if let audioFilePath = audioFilePathOrNil {
             let audioFileURL = URL(fileURLWithPath: audioFilePath)
             do {
-                self.audioPlayer = try AVAudioPlayer(contentsOf: audioFileURL, fileTypeHint: "wav")
+                self.audioPlayer = try AVAudioPlayer(contentsOf: audioFileURL, fileTypeHint: "mp3")
             } catch {
                 print("audio player not initialized")
             }
